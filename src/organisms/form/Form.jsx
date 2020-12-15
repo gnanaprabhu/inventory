@@ -2,37 +2,32 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Input,Button,Label } from '../../atoms'
+import { Input,Button,Label,Checkbox } from '../../atoms'
 
 export class Form extends React.Component{
   
   state = {
-    form:[{
-      element:'label',
-      className:'custom-label',
-    },{
-      element:'input',
-      type:'text',
-      className:'custom-textbox',
-      placeholder:'email',
-      name:'email'
-    },{
-      element:'button',
-      className:'custom-button',
-      value:'submit',
-    }],
     formValues :{},
   };
   
   handleChange=(event)=>{
-    const element = event.target
-    const obj = {...this.state.formValues}
-    obj[element.name] = element.value;
+    const element = event.target;
+    const existingState = {...this.state.formValues};
+    existingState[element.name] = element.value;
     this.setState({
-      formValues: obj,
-    })
+      formValues: existingState,
+    });
   }
   
+  handleCheckboxClick = (event) => {
+    const element = event.target;
+    const existingState = {...this.state.formValues};
+    existingState[element.name] = element.checked;
+    this.setState({
+      formValues: existingState,
+    });
+
+  }
   renderElements = () => {
     const {formList} = this.props;
     const {formValues} = this.state;
@@ -41,9 +36,11 @@ export class Form extends React.Component{
         case 'label':
         return <Label key={index}  {...item}/>
         case 'input':
-          return <Input handleChange={this.handleChange} value={formValues[item.name]}  key={index} {...item} />
+          return <Input onChange={this.handleChange} value={formValues[item.name]}  key={index} {...item} />
+        case 'checkbox':
+          return <Checkbox name={item.name} id={item.name} onClick={this.handleCheckboxClick}/>
         default:
-          return <Label key={index} value=""/>
+          return <Label key={index} value={item.value}/>
       }
     })
   }

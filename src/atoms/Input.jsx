@@ -3,13 +3,13 @@ import React from 'react';
 export class Input extends React.Component{
 
   handleChange = (event) => {
-    const {handleChange} = this.props;
-    handleChange && handleChange(event);
+    const {onChange} = this.props;
+    onChange && onChange(event);
   }
 
   handleBlur =(event) => {
-    const {handleBlur} = this.props;
-    handleBlur && handleBlur(event);
+    const {onBlur} = this.props;
+    onBlur && onBlur(event);
   }
   render(){
     const {className, id, placeholder,type,value,name} = this.props;

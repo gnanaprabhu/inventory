@@ -17,7 +17,7 @@ export class DataGrid extends React.Component {
   render() {
     return (
       <div style={{ height: 300, width: '100%' }}>
-        <DataGridImpo rows={rows} columns={columns} />
+        <DataGridImpo rows={rows} columns={columns} hideFooterSelectedRowCount={true} hideFooterPagination={true} hideFooterRowCount={true} hideFooter={true}/>
       </div>
     );
   }
