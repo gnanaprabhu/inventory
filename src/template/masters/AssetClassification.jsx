@@ -38,12 +38,10 @@ const addAssetClassfication = () =>{
      element:'checkbox',
      value:'serialno',
      name:'serialno',
-     isChecked:false
-   },
-   {
-     element:'label',
-     className:'serial-no-label',
-     value:'Serial No',
+     isChecked:false,
+     labelValue:'Serial No',
+     labelClass:'serial-no-label',
+     showLabel:true,
    }];
    return (
      <div>

@@ -38,7 +38,7 @@ export class Form extends React.Component{
         case 'input':
           return <Input onChange={this.handleChange} value={formValues[item.name]}  key={index} {...item} />
         case 'checkbox':
-          return <Checkbox name={item.name} id={item.name} onClick={this.handleCheckboxClick}/>
+          return <Checkbox name={item.name} id={item.name} onClick={this.handleCheckboxClick} {...item}/>
         default:
           return <Label key={index} value={item.value}/>
       }
