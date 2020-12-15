@@ -1,0 +1,31 @@
+html, body {
+  height: 100%;
+}
+#root{
+  height: 100%;
+}
+
+.App {
+  height: 100%; 
+}
+
+header{
+  height: 45px;
+  background-color: #F36E44;
+}
+.main-container{
+  text-align: center;
+  display: flex;
+  height: 100%;
+}
+.menu{
+  flex: 1 0 0;
+  background-color: #35363a;
+}
+li{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.page-container{
+  flex: 4 0 0;
+}
