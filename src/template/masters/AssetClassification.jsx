@@ -9,8 +9,7 @@ const handleSearch =(event) => {
 const renderAssetSearchbox = () => {
   return(
     <div className="asset-search-container">
-      <Label className="asset-search-label" value="Search"/>
-      <Input className="asset-search-box" name="asset-search-box" placeholder="Asset Classfication Name" onChange={handleSearch}/>
+      <Input showLabel={true} labelValue="Search" labelClass="asset-search-label" className="asset-search-box" name="asset-search-box" placeholder="Asset Classfication Name" onChange={handleSearch}/>
     </div>
   )
 }
@@ -24,12 +23,13 @@ const renderAssetData = () => {
 }
 
 const addAssetClassfication = () =>{
-  const form =[{
-     element:'label',
-     className:'assest-classficaiton-label',
-     value:'Assest Classfication Name',
-   },{
+   const form =[
+    {
      element:'input',
+     showLabel:true,
+     containerClass:'',
+     labelValue:'Assest Classfication Name',
+     labelClass:'assest-classficaiton-label',
      type:'text',
      className:'assest-classfication-textbox',
      placeholder:'assest-classfication',
