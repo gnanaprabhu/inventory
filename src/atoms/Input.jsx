@@ -1,20 +1,22 @@
 import React from 'react';
+import {Label} from './Label';
 
 export class Input extends React.Component{
 
   handleChange = (event) => {
-    const {handleChange} = this.props;
-    handleChange && handleChange(event);
+    const {onChange} = this.props;
+    onChange && onChange(event);
   }
 
   handleBlur =(event) => {
-    const {handleBlur} = this.props;
-    handleBlur && handleBlur(event);
+    const {onBlur} = this.props;
+    onBlur && onBlur(event);
   }
   render(){
-    const {className, id, placeholder,type,value,name} = this.props;
-    console.log('value',value);
+    const {className, id, placeholder,containerClass,labelValue,labelClass,type,value,name, showLabel} = this.props;
     return (
+      <div className={`text-box-wrapper ${containerClass}`}>
+      {showLabel && <Label value={labelValue} className={labelClass}/>}
       <input
         id={id}
         placeholder={placeholder}
@@ -30,6 +32,7 @@ export class Input extends React.Component{
         //     : "text-input"
         // }
       />
+      </div>
     )
   }
 }
