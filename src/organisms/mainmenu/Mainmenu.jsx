@@ -43,7 +43,10 @@ export class MainMenu extends React.Component{
 
   handleMenuClick =(event) => {
     const menu =  event.target;
-    const isParentMenu = this.state.menu.some(item=>item.label === menu.innerText);
+    console.log('menu',menu.className);
+    console.log('state',this.state.menu);
+    const isParentMenu = this.state.menu.some(item=>item.className === menu.className);
+    console.log('parent menu',isParentMenu);
     if(isParentMenu){
       const updatedMenu = this.state.menu.map( item => {
         if(item.label === menu.innerText){
@@ -64,7 +67,7 @@ export class MainMenu extends React.Component{
     if(item.nodes && item.nodes.length>0){
       innerChild = <ul className={item.innerClass}>{item.nodes.map(this.renderList)}</ul>;
     }
-    return <li className={item.className}  key={index}><Link to={`${item.url}`}>{item.label}{innerChild}</Link></li>
+    return <Link className={item.label} to={`${item.url}`}><li className={item.className}  key={index}>{item.label}{innerChild}</li></Link>
   } 
 
   renderMenu = () => {
