@@ -8,7 +8,7 @@ export class MainMenu extends React.Component{
     menu : [
       {
       label:"Masters",
-      className:"masters",
+      className:"first-level",
       innerClass:"hidden",
       url:"/home",
       nodes:[{
@@ -23,7 +23,7 @@ export class MainMenu extends React.Component{
       },
       {
       label:"Asset Transaction",
-      className:"asset-transaction",
+      className:"first-level",
       innerClass:"hidden",
       url:"/home",
       nodes:[{
@@ -34,7 +34,7 @@ export class MainMenu extends React.Component{
       },
       {
         label:"Asset Inward",
-        className:"",
+        className:"first-level",
         innerClass:"hidden",
         url:"/home",
       }
@@ -43,16 +43,15 @@ export class MainMenu extends React.Component{
 
   handleMenuClick =(event) => {
     const menu =  event.target;
-    console.log('menu',menu.className);
-    console.log('state',this.state.menu);
-    const isParentMenu = this.state.menu.some(item=>item.className === menu.className);
-    console.log('parent menu',isParentMenu);
+    const isParentMenu = menu.className === 'first-level';
     if(isParentMenu){
       const updatedMenu = this.state.menu.map( item => {
         if(item.label === menu.innerText){
-          item.innerClass="active"
+          item.className = `${item.className} open`;
+          item.innerClass="active";
         }else{
-          item.innerClass ="hidden"
+          item.className = `first-level`;
+          item.innerClass ="hidden";
         }
         return item;
       });
