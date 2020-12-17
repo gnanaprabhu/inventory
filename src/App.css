@@ -28,4 +28,5 @@ li{
 }
 .page-container{
   flex: 4 0 0;
+  padding: 20px 20px 20px 48px;
 }

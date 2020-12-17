@@ -2,6 +2,7 @@ import React from 'react';
 import {Label,Input} from '../../atoms'
 import { Form } from '../../organisms/form';
 import { DataGrid } from '../../organisms/datagrid';
+import './Style.scss';
 
 const handleSearch =(event) => {
   console.log('search',event)
@@ -44,8 +45,8 @@ const addAssetClassfication = () =>{
      showLabel:true,
    }];
    return (
-     <div>
-       {'AssetClassfication'}
+    <div className="assest-classfication-container">
+      <h2 className="assest-classfication-header">Asset Classification</h2>
        <Form formList={form}/>
        {renderAssetData()}
      </div>

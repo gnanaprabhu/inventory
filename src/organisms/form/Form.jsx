@@ -3,6 +3,7 @@ import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Input,Button,Label,Checkbox } from '../../atoms'
+import './Style.scss';
 
 export class Form extends React.Component{
   
@@ -49,11 +50,13 @@ export class Form extends React.Component{
     return (
       <div className="form-wrapper">
         <form onSubmit={(event)=>{event.preventDefault()}}>
-          {this.renderElements()}
+          <div className="form-filed-wrapper">
+            {this.renderElements()}
+          </div>
           <div className="form-button-wrapper">
           {!hideReset && <button
             type="button"
-            className="outline"
+            className="outline reset-button"
             onClick={()=>{
               this.setState({
                 formValues:{},
@@ -63,7 +66,7 @@ export class Form extends React.Component{
             Reset
           </button>
           }
-          {!hideSubmit && <button type="submit" onClick={()=>{console.log('value',this.state.formValues)}}>
+          {!hideSubmit && <button className="submit-button" type="submit" onClick={()=>{console.log('value',this.state.formValues)}}>
             Submit
           </button>
           }
