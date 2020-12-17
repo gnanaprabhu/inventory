@@ -67,7 +67,7 @@ export class MainMenu extends React.Component{
     if(item.nodes && item.nodes.length>0){
       innerChild = <ul className={item.innerClass}>{item.nodes.map(this.renderList)}</ul>;
     }
-    return <Link className={item.label} to={`${item.url}`}><li className={item.className}  key={index}>{item.label}{innerChild}</li></Link>
+    return <Link className={item.label} to={`${item.url}`}><li className={item.className}  key={index}><span>{item.label}</span>{innerChild}</li></Link>
   } 
 
   renderMenu = () => {

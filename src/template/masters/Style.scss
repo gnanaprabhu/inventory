@@ -1,6 +1,7 @@
-.assest-classfication-container {
-  
-  .assest-classfication-header {
+.assest-classfication-container,
+.brand-master-container {
+
+  .header {
     display: flex;
     font-size: 20px;
     font-weight: 700;
@@ -28,7 +29,7 @@
     }
   }
 
- .assest-classficaiton-label,
+  label,
  .reset-button {
     margin-right: 8px;
   }

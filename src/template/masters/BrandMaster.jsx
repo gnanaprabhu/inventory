@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form } from '../../organisms/form';
+import './Style.scss';
 
 const addBrandName = () =>{
   const form =[
@@ -15,8 +16,8 @@ const addBrandName = () =>{
     name:'brand-name'
   }];
   return (
-    <div>
-      {'Brand Master'}
+    <div className="brand-master-container">
+      <h2 className="header">Brand Master</h2>
       <Form formList={form}/>
     </div>
   )
