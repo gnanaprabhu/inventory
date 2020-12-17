@@ -1,0 +1,38 @@
+a{
+  text-decoration: none;
+}
+ul{
+  list-style-type: none;
+  text-align: left;
+}
+.hidden{
+  display: none;
+}
+
+.main-menu{
+  padding:0px;
+  margin:0px;
+}
+.menu{
+  flex: 1 0 0;
+  background-color: #35363a;
+}
+
+li{
+  &.open{
+    border: none;
+    padding-bottom: 0;
+  }
+  border-bottom: 1px solid #414247;
+  color:white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.active{
+  padding: 10px 0 0 0;
+  li{
+    background-color:#546066;
+    padding-left: 30px;
+  }
+}
