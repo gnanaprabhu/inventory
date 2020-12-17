@@ -46,7 +46,7 @@ const addAssetClassfication = () =>{
    }];
    return (
     <div className="assest-classfication-container">
-      <h2 className="assest-classfication-header">Asset Classification</h2>
+      <h2 className="header">Asset Classification</h2>
        <Form formList={form}/>
        {renderAssetData()}
      </div>

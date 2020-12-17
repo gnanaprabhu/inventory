@@ -1,0 +1,59 @@
+html, body {
+  height: 100%;
+}
+#root{
+  height: 100%;
+}
+
+.App {
+  height: 100%; 
+}
+
+header {
+  height: 45px;
+  background-color: #F36E44;
+}
+.main-container{
+  text-align: center;
+  display: flex;
+  height: 100%;
+}
+.menu{
+  flex: 1 0 0;
+  background-color: #35363a;
+}
+li{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.page-container{
+  flex: 4 0 0;
+  padding: 20px 20px 20px 48px;
+}
+.header-container {
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+
+  .company-logo {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .login-button {
+    padding: 8px 20px;
+    background: #f36e44;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+    outline: none !important;
+    text-align: center;
+    border: 1px solid;
+  }
+}
