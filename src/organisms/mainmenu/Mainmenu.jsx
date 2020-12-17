@@ -1,5 +1,5 @@
 import React from 'react'
-import './styles.css';
+import './styles.scss';
 import { Link } from "react-router-dom"
 // import { uparrowIcon , downarrowIcon} from './icons'
 
@@ -43,7 +43,8 @@ export class MainMenu extends React.Component{
 
   handleMenuClick =(event) => {
     const menu =  event.target;
-    const isParentMenu = menu.className === 'first-level';
+    const isParentMenu = menu.className.split(' ')[0] === 'first-level';
+    console.log('menu',menu.className);
     if(isParentMenu){
       const updatedMenu = this.state.menu.map( item => {
         if(item.label === menu.innerText){
