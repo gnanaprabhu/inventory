@@ -30,13 +30,15 @@
   }
 }
 
-input{
+input,
+select{
   border: 1px solid #dededf;
   color: #3b3b3b;
   height: 24px;
   padding: 0 8px;
 }
-input:focus {
+input:focus,
+select:focus {
   border-color: #dededf;
   outline: none;
 }

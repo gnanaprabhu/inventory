@@ -24,6 +24,18 @@ const renderAssetData = () => {
 }
 
 const addAssetClassfication = () =>{
+  const option = [
+    {
+      name:'test0',
+      value:'test'
+    },{
+      name:'test1',
+      value:'test1'
+    },{
+      name:'test2',
+      value:'test2'
+    },
+  ]
    const form =[
     {
      element:'input',
@@ -43,6 +55,13 @@ const addAssetClassfication = () =>{
      labelValue:'Serial No',
      labelClass:'serial-no-label',
      showLabel:true,
+   },{
+    element:'select',
+    showLabel:true,
+    containerClass:'',
+    labelValue:'select',
+    labelClass:'selectlabel',
+    option,
    }];
    return (
     <div className="assest-classfication-container">

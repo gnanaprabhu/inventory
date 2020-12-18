@@ -2,7 +2,7 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Input,Button,Label,Checkbox } from '../../atoms'
+import { Input,Button,Label,Checkbox,Select } from '../../atoms'
 import './Style.scss';
 
 export class Form extends React.Component{
@@ -40,6 +40,8 @@ export class Form extends React.Component{
           return <Input onChange={this.handleChange} value={formValues[item.name]}  key={index} {...item} />
         case 'checkbox':
           return <Checkbox name={item.name} id={item.name} onClick={this.handleCheckboxClick} {...item}/>
+          case 'select':
+            return <Select onChange={this.handleChange} key={index} {...item}/>
         default:
           return <Label key={index} value={item.value}/>
       }
