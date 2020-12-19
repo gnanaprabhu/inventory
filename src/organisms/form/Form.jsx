@@ -2,7 +2,7 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Input,Button,Label,Checkbox,Select } from '../../atoms'
+import { Input,Label,Checkbox,Select } from '../../atoms'
 import './Style.scss';
 
 export class Form extends React.Component{
@@ -12,6 +12,7 @@ export class Form extends React.Component{
   };
   
   handleChange=(event)=>{
+    console.log('ev',event.target);
     const element = event.target;
     const existingState = {...this.state.formValues};
     existingState[element.name] = element.value;
@@ -31,6 +32,7 @@ export class Form extends React.Component{
   }
   renderElements = () => {
     const {formList} = this.props;
+    console.log('f',formList);
     const {formValues} = this.state;
     return formList.map((item,index) => {
       switch(item.element){
@@ -41,11 +43,15 @@ export class Form extends React.Component{
         case 'checkbox':
           return <Checkbox name={item.name} id={item.name} onClick={this.handleCheckboxClick} {...item}/>
           case 'select':
-            return <Select onChange={this.handleChange} key={index} {...item}/>
+            return <Select onChange={this.handleChange} selected={this.handleChange} key={index} {...item}/>
         default:
           return <Label key={index} value={item.value}/>
       }
     })
+  }
+  handleSubmit = () => {
+    const { onSubmit } = this.props;
+    onSubmit({...this.state.formValues});
   }
   render(){
     const{hideReset,hideSubmit} = this.props;
@@ -68,7 +74,7 @@ export class Form extends React.Component{
             Reset
           </button>
           }
-          {!hideSubmit && <button className="submit-button" type="submit" onClick={()=>{console.log('value',this.state.formValues)}}>
+          {!hideSubmit && <button className="submit-button" type="submit" onClick={this.handleSubmit}>
             Submit
           </button>
           }

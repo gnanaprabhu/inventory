@@ -12,8 +12,8 @@ export class AssetDetails {
     const form =[
       {
         element:'select',
+        name:'brand-list',
         containerClass:'brand-list-container',
-        onChange:this.handleChange,
         showLabel:true,
         labelValue:'Brand',
         labelClass:'asset-brand-label',
