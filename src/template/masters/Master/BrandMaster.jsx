@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from '../../organisms/form';
+import { Form } from '../../../organisms/form';
 import './Style.scss';
 
 const addBrandName = () =>{

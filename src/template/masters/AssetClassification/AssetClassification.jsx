@@ -1,8 +1,7 @@
 import React from 'react';
-import {Label,Input} from '../../atoms'
-import { Form } from '../../organisms/form';
-import { DataGrid } from '../../organisms/datagrid';
-import { Table } from '../../organisms/table';
+import {Input} from '../../../atoms'
+import { Form } from '../../../organisms/form';
+import { DataGrid } from '../../../organisms/datagrid';
 import './Style.scss';
 
 const handleSearch =(event) => {
@@ -56,13 +55,6 @@ const addAssetClassfication = () =>{
      labelValue:'Serial No',
      labelClass:'serial-no-label',
      showLabel:true,
-   },{
-    element:'select',
-    showLabel:true,
-    containerClass:'',
-    labelValue:'select',
-    labelClass:'selectlabel',
-    option,
    }];
    return (
     <div className="assest-classfication-container">
