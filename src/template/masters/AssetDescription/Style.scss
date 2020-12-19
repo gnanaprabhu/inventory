@@ -1,5 +1,4 @@
-.assest-classfication-container,
-.brand-master-container {
+ .assest-description-container {
 
   .header {
     display: flex;
@@ -7,84 +6,32 @@
     font-weight: 700;
     color: #798489;
   }
-
-  .form-wrapper {
+  .select-box-wrapper{
     display: flex;
-    margin-bottom: 24px;
-    
-
-    .text-box-wrapper {
-      margin-right: 24px;
-      display: flex;
-      flex-wrap: wrap;
-
-    .label {
-      margin-right: 8px;
-    }
-    }
-    .checkbox-wrapper {
-      display: flex;
-      align-items: center;
-      flex-direction: row-reverse;
-    }
-  }
-
-  label,
- .reset-button {
-    margin-right: 8px;
-  }
- .serial-no-label {
-    margin-left: 8px;
-  }
-
-  .asset-table-wrapper {
-    .text-box-wrapper {
-      
+    flex-wrap: wrap;
     label {
       margin-right: 8px;
     }
-    }
-    .asset-search-container {
-      display: flex;
-      margin-bottom: 16px;
-      margin-top: 32px;
-      padding-top: 32px;
-      border-top: 1px solid #dededf;
-    }
-    
-    .MuiDataGrid-root {
-      border: none;
+  }
+}
+.description-modal-container {
+  display: flex;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid #dededf;
 
-      .MuiDataGrid-cell,
-      .MuiDataGrid-colCell {
-        text-align: left;
-        padding-left: 6px;
-        font-size: 12px;
-        font-weight: bold;
-        min-height: 40px !important;
-        max-height: 40px !important;
-        display: flex;
-        align-items: center;
-      }
-      .MuiDataGrid-columnSeparator {
-        display: none;
-      }
-      .MuiDataGrid-row,
-      .MuiDataGrid-colCell-draggable {
-        min-height: 40px !important;
-        max-height: 40px !important;
-      }
-      .MuiDataGrid-columnsContainer {
-        background: #37474F;  
-        color: #fff;
-        font-size: 12px;
-        font-weight: bold;
-      }
-      .MuiDataGrid-sortIcon {
-        color: #fff;
-      }
-      .MuiDataGrid-colCell:focus,
-      .MuiDataGrid-cell:focus {
+  .description-button-wrapper {
+    font-size: 14px;
+    font-weight: bold;
+    color: #798489;
+  
+    .description-button {
+      background: #fff;
+      font-size: 14px;
+      border: 2px solid #dededf;
+      margin-left: 8px;
+      &:focus {
+        border-color: #dededf;
         outline: none;
       }
     }
