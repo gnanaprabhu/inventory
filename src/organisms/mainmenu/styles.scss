@@ -1,5 +1,8 @@
 a{
   text-decoration: none;
+  color:white;
+  display: block;
+  padding: 10px 0px;
 }
 ul{
   list-style-type: none;
@@ -25,8 +28,6 @@ li {
   }
   border-bottom: 1px solid #414247;
   color:white;
-  padding-top: 10px;
-  padding-bottom: 10px;
 
   span {
     padding-left: 20px;
@@ -40,6 +41,8 @@ li {
   padding: 10px 0 0 0;
   li{
     background-color:#546066;
+  }
+  a{
     padding-left: 30px;
   }
 }
