@@ -16,11 +16,24 @@ const columns: ColDef[] = [
 ];
 
 export class DataGrid extends React.Component {
-  
+  static defaultProps = {
+    hideFooterPagination:true,
+    hideFooter:true,
+    hideFooterRowCount:true,
+    hideFooterSelectedRowCount:true,
+    rows:rows,
+    cols:columns,
+  }
   render() {
+    const { rows,cols,hideFooter,hideFooterPagination,hideFooterRowCount,hideFooterSelectedRowCount } = this.props;
     return (
       <div style={{ height: 300, width: '100%' }}>
-        <DataGridImpo rows={rows} columns={columns} hideFooterSelectedRowCount={true} hideFooterPagination={true} hideFooterRowCount={true} hideFooter={true}/>
+        <DataGridImpo rows={rows} 
+          columns={cols} 
+          hideFooterSelectedRowCount={hideFooterSelectedRowCount} 
+          hideFooterPagination={hideFooterPagination}
+          hideFooterRowCount={hideFooterRowCount}
+          hideFooter={hideFooter}/>
       </div>
     );
   }
