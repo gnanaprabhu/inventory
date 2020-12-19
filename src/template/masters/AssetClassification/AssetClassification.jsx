@@ -18,7 +18,7 @@ const renderAssetData = () => {
   return (
   <div className="asset-table-wrapper">
     {renderAssetSearchbox()}
-    <DataGrid/>
+    <DataGrid />
   </div>
   )
 }

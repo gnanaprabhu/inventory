@@ -1,21 +1,27 @@
 import React from 'react';
 import { Select } from '../../../atoms';
 import { Modal } from '../../../organisms/modal';
+import { Form } from '../../../organisms/form';
+import { DataGrid } from '../../../organisms/datagrid';
+import { AssetDetails} from './AssetDetails';
 import './Style.scss'
 
 
 export class AssetDescription extends React.Component {
+  constructor(props){
+    super(props);
+    this.assetDetails = new AssetDetails(this);
+  }
   state ={
     showModal:false,
   }
-  handleChange = (event) => {
-    console.log(event);
+
+  handleChange = () => {
+    console.log('drop down changed');
   }
 
   toggleModal = () => {
-    
    const {showModal} = this.state;
-   console.log('tooge',showModal);
    this.setState({
      showModal:!showModal,
    })
@@ -24,7 +30,7 @@ export class AssetDescription extends React.Component {
   modalContent = () => {
     return(
     <Modal title="Assest Description" onToggle={this.toggleModal}>
-        <p>Lorem ipsum </p>
+        <Form formList={this.assetDetails.getAssetDescriptionForm()}/>
     </Modal>
     );
   }
@@ -44,9 +50,14 @@ export class AssetDescription extends React.Component {
       </div>
     );
   }
+  renderGrid = () => {
+    
+  }
 
   render(){
-    console.log('rerender');
+    const cols = this.assetDetails.getAssetColumns();
+    const rows = this.assetDetails.getAssetRows();
+
     const selectProps = {
       showLabel:true,
       labelValue:'Asset Classificaiton',
@@ -70,6 +81,7 @@ export class AssetDescription extends React.Component {
         <h2 className="header">Asset Description Master</h2>
         <Select {...selectProps}/>
         {this.renderModal()}
+        <DataGrid cols={cols} rows={rows}/>
       </div>
     )
   }
