@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.scss';
 import { Link } from "react-router-dom"
-import { ArrowIcon} from './ArrowIcon.jsx';
+import { ArrowIcon }  from '../../icons';
 
 export class MainMenu extends React.Component{
   state={

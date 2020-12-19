@@ -2,6 +2,7 @@ import React from 'react';
 import {Label,Input} from '../../atoms'
 import { Form } from '../../organisms/form';
 import { DataGrid } from '../../organisms/datagrid';
+import { Table } from '../../organisms/table';
 import './Style.scss';
 
 const handleSearch =(event) => {
