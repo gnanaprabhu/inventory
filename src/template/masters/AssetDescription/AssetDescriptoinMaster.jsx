@@ -1,6 +1,7 @@
 import React from 'react';
 import { Select } from '../../../atoms';
 import { Modal } from '../../../organisms/modal';
+import './Style.scss'
 
 
 export class AssetDescription extends React.Component {
@@ -32,7 +33,13 @@ export class AssetDescription extends React.Component {
     const { showModal } =  this.state;
     return(
       <div className="description-modal-container">
-        <div onClick={this.toggleModal}>Add Description</div>
+        <div className="description-button-wrapper">
+        <span>Add Description</span>
+        <button className="description-button"
+          onClick={this.toggleModal}>
+            <span>+</span>
+        </button>
+        </div>
         {showModal && this.modalContent()}
       </div>
     );
