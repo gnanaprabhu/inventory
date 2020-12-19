@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.scss';
 import { Link } from "react-router-dom"
-import { ArrowIcon} from './ArrowIcon.tsx';
+import { ArrowIcon} from './ArrowIcon';
 
 export class MainMenu extends React.Component{
   state={
@@ -14,13 +14,17 @@ export class MainMenu extends React.Component{
       isOpen:false,
       icon:<ArrowIcon/>,
       nodes:[{
-        label:"Assest Classification",
-        className:"assest-classificaiton",
-        url:"/assest-classfication",
+        label:"Asset Classification",
+        className:"asset-classificaiton",
+        url:"/asset-classfication",
       },{
         label:"Branch Master",
         className:"brand-master",
         url:"/brand-master",
+      },{
+        label:"Asset Description",
+        className:"asset-description",
+        url:"/asset-description",
       }]
       },
       {
