@@ -4,6 +4,8 @@ import { Modal } from '../../../organisms/modal';
 import { Form } from '../../../organisms/form';
 import { DataGrid } from '../../../organisms/datagrid';
 import { AssetDetails} from './AssetDetails';
+import './Style.scss'
+
 
 export class AssetDescription extends React.Component {
   constructor(props){
@@ -37,7 +39,13 @@ export class AssetDescription extends React.Component {
     const { showModal } =  this.state;
     return(
       <div className="description-modal-container">
-        <div onClick={this.toggleModal}>Add Description</div>
+        <div className="description-button-wrapper">
+        <span>Add Description</span>
+        <button className="description-button"
+          onClick={this.toggleModal}>
+            <span>+</span>
+        </button>
+        </div>
         {showModal && this.modalContent()}
       </div>
     );
