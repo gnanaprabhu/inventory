@@ -22,16 +22,9 @@ export class AssetDescription extends React.Component {
 
   modalContent = () => {
     return(
-    <Modal>
-        <div className="modal-header">
-          <div className="title">Heading</div>
-          <button className="modal-close"
-          onClick={this.toggleModal}>
-            <span>X</span>
-          </button>
-        </div>
+    <Modal title="Assest Description" onToggle={this.toggleModal}>
         <p>Lorem ipsum </p>
-      </Modal>
+    </Modal>
     );
   }
 
