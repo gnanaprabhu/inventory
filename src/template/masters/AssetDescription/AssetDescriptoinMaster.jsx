@@ -27,6 +27,10 @@ export class AssetDescription extends React.Component {
    })
   }
 
+  handleFormSubmit = (formValues) =>{
+    console.log(formValues);
+  }
+
   modalContent = () => {
     return(
     <Modal title="Assest Description" onToggle={this.toggleModal}>
