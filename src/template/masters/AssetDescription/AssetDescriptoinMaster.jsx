@@ -34,7 +34,9 @@ export class AssetDescription extends React.Component {
   modalContent = () => {
     return(
     <Modal title="Assest Description" onToggle={this.toggleModal}>
+      <div className='assest-popup'>
         <Form formList={this.assetDetails.getAssetDescriptionForm()}/>
+      </div>
     </Modal>
     );
   }
