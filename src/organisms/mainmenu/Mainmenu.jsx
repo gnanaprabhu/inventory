@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.scss';
 import { Link } from "react-router-dom"
-import { ArrowIcon} from './ArrowIcon.tsx';
+import { ArrowIcon} from './ArrowIcon.jsx';
 
 export class MainMenu extends React.Component{
   state={
@@ -78,7 +78,17 @@ export class MainMenu extends React.Component{
       innerChild = <ul className={item.innerClass} onClick={(e)=>e.stopPropagation()}>{item.nodes.map(this.renderList)}</ul>;
     }
     const menuItem = item.label
-    return <li className={item.className} onClick={(e)=>{this.handleMenuClick(item);}}  key={index}><Link className={item.label} to={`${item.url}`}><span className="">{menuItem}</span><span className="arrow-icon">down</span>{innerChild}</Link></li>
+    return (
+    <li className={item.className} onClick={(e)=>{this.handleMenuClick(item);}}  key={index}>
+      <Link className={item.label} to={`${item.url}`}>
+        <div className='menu-item'>
+          <span className="">{menuItem}</span>
+          {item.icon && <div className="arrow-icon">{item.icon}</div>}
+        </div>
+        {innerChild}
+      </Link>
+    </li>
+    );
   } 
 
   renderMenu = () => {
