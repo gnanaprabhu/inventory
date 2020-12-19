@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.scss';
 import { Link } from "react-router-dom"
-// import { uparrowIcon , downarrowIcon} from './icons'
+import { ArrowIcon} from './ArrowIcon.tsx';
 
 export class MainMenu extends React.Component{
   state={
@@ -11,6 +11,8 @@ export class MainMenu extends React.Component{
       className:"first-level",
       innerClass:"hidden",
       url:"/home",
+      isOpen:false,
+      icon:<ArrowIcon/>,
       nodes:[{
         label:"Assest Classification",
         className:"assest-classificaiton",
@@ -26,6 +28,8 @@ export class MainMenu extends React.Component{
       className:"first-level",
       innerClass:"hidden",
       url:"/home",
+      icon:<ArrowIcon/>,
+      isOpen:false,
       nodes:[{
         label:"Test",
         className:"",
@@ -37,44 +41,51 @@ export class MainMenu extends React.Component{
         className:"first-level",
         innerClass:"hidden",
         url:"/home",
+        isOpen:false,
+        icon:<ArrowIcon/>,
       }
    ]
   }
 
-  handleMenuClick =(event) => {
-    const menu =  event.target;
-    const isParentMenu = menu.className.split(' ')[0] === 'first-level';
-    console.log('menu',menu.className);
-    if(isParentMenu){
-      const updatedMenu = this.state.menu.map( item => {
-        if(item.label === menu.innerText){
-          item.className = `${item.className} open`;
-          item.innerClass="active";
-        }else{
-          item.className = `first-level`;
-          item.innerClass ="hidden";
-        }
-        return item;
-      });
-      this.setState({
-        menu:updatedMenu,
-      });
-    }
+  handleMenuClick =(menu) => {
+    //const menu =  event.target;
+    console.log('menu',menu);
+      const isParentMenu = menu.className.split(' ')[0] === 'first-level';
+
+      if(isParentMenu){
+        const updatedMenu = this.state.menu.map( item => {
+          if(item.label === menu.label && !menu.isOpen){
+            item.className = `${item.className} open`;
+            item.innerClass="active";
+            item.isOpen=true;
+          
+          }else{
+            item.className = `first-level`;
+            item.innerClass ="hidden";
+            item.isOpen=false;
+          }
+          return item;
+        });
+        this.setState({
+          menu:updatedMenu,
+        });
+      }
   }
 
   renderList = (item,index) => {
     let innerChild;
     if(item.nodes && item.nodes.length>0){
-      innerChild = <ul className={item.innerClass}>{item.nodes.map(this.renderList)}</ul>;
+      innerChild = <ul className={item.innerClass} onClick={(e)=>e.stopPropagation()}>{item.nodes.map(this.renderList)}</ul>;
     }
-    return <Link className={item.label} to={`${item.url}`}><li className={item.className}  key={index}><span>{item.label}</span>{innerChild}</li></Link>
+    const menuItem = item.label
+    return <li className={item.className} onClick={(e)=>{this.handleMenuClick(item);}}  key={index}><Link className={item.label} to={`${item.url}`}><span className="">{menuItem}</span><span className="arrow-icon">down</span>{innerChild}</Link></li>
   } 
 
   renderMenu = () => {
     const {menu} = this.state;
     const menuList = menu.map(this.renderList)
     return (
-      <ul className="main-menu" onClick={this.handleMenuClick}>
+      <ul className="main-menu" >
         {menuList}
       </ul>
     );
