@@ -14,10 +14,12 @@ export class AssetDescription extends React.Component {
   }
   state ={
     showModal:false,
+    descriptionList:[],
+    selectedDescription:{},
   }
 
   handleChange = () => {
-    console.log('drop down changed');
+   // console.log('drop down changed');
   }
 
   toggleModal = () => {
@@ -28,13 +30,31 @@ export class AssetDescription extends React.Component {
   }
 
   handleFormSubmit = (formValues) =>{
-    console.log(formValues);
+    const { descriptionList, selectedDescription } = this.state;
+    if(selectedDescription.id){
+       const assetDescriptionList =  descriptionList.map(item => {
+        if(item.id === selectedDescription.id){
+           for(const key in formValues){
+             item[key] = formValues[key];
+           }
+        }
+        return item;
+       });
+     this.setState({
+       descriptionList:assetDescriptionList,
+     },this.toggleModal());
+    }else{
+      this.setState({
+        descriptionList:[...descriptionList,{id:descriptionList.length+1,...formValues}],
+      },this.toggleModal());
+    }
+
   }
 
   modalContent = () => {
     return(
     <Modal title="Assest Description" onToggle={this.toggleModal}>
-        <Form formList={this.assetDetails.getAssetDescriptionForm()}/>
+        <Form formList={this.assetDetails.getAssetDescriptionForm()} onSubmit={this.handleFormSubmit}/>
     </Modal>
     );
   }
@@ -46,7 +66,13 @@ export class AssetDescription extends React.Component {
         <div className="description-button-wrapper">
         <span>Add Description</span>
         <button className="description-button"
-          onClick={this.toggleModal}>
+          onClick={ () => {
+            this.setState({
+              selectedDescription:{}
+            })
+            this.toggleModal();
+            }
+          }>
             <span>+</span>
         </button>
         </div>

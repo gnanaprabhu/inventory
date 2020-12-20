@@ -22,15 +22,10 @@ export class Input extends React.Component{
         placeholder={placeholder}
         name={name}
         type={type}
-        value={value?value:''}
+        value={value}
         onChange={this.handleChange}
         onBlur={this.handleBlur}
         className={`form-input ${className}`}
-        // className={
-        //   errors.email && touched.email
-        //     ? "text-input error"
-        //     : "text-input"
-        // }
       />
       </div>
     )

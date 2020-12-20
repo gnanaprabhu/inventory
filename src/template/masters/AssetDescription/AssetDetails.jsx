@@ -8,16 +8,29 @@ export class AssetDetails {
   handleBrandSelect = () => {
 
   }
+  getSelectedDescription = (selectedIndex) => {
+    const { descriptionList } = this.master.state;
+    const selectedDescription = descriptionList[selectedIndex];
+    this.master.setState({
+      selectedDescription: selectedDescription,
+    });
+  }
   getAssetDescriptionForm = () => {
+    const { selectedDescription } = this.master.state;
     const form =[
       {
         element:'select',
-        name:'brand-list',
+        name:'brand',
         containerClass:'brand-list-container',
         showLabel:true,
         labelValue:'Brand',
         labelClass:'asset-brand-label',
+        value: selectedDescription['brand']|| '',
         option: [
+          {
+            name:'select the brand',
+            value:'select the brand'
+          },
           {
             name:'Lenovo',
             value:'Lenovo'
@@ -39,7 +52,8 @@ export class AssetDetails {
        type:'text',
        className:'asset-modal-no-value',
        placeholder:'Asset Modal',
-       name:'asset-modal-no'
+       name:'asset-modal-no',
+       value:selectedDescription['asset-modal-no'] || '',
      },{
       element:'input',
       showLabel:true,
@@ -49,22 +63,21 @@ export class AssetDetails {
       type:'text',
       className:'asset-description-value',
       placeholder:'Asset Modal',
-      name:'asset-description-value'
+      name:'asset-description',
+      value: selectedDescription['asset-description'] || '',
     }];
     return form;
   }
+
   getAssetRows = () => {
-    const rows = [
-      { id: 1, col1: 'dell', col2: 'dell09', col3:'taptop' },
-      { id: 2, col1: 'hp', col2: 'hp123', col3:'taptop' },
-    ];
-    return rows;
+    const { descriptionList } = this.master.state;
+    return descriptionList;
   }
   getAssetColumns = () => {
     const columns = [
-      { field: 'col1', headerName: 'Brand', width: 150 },
-      { field: 'col2', headerName: 'Asset model No', width: 150 },
-      { field: 'col3', headerName:'Asset description',width:150 },
+      { field: 'brand', headerName: 'Brand', width: 150 },
+      { field: 'asset-modal-no', headerName: 'Asset model No', width: 150 },
+      { field: 'asset-description', headerName:'Asset description',width:150 },
       {
         field: "col4",
         headerName: "Edit",
@@ -73,7 +86,7 @@ export class AssetDetails {
         disableClickEventBubbling: true,
         renderCell: (params) => {
           const onClick = () => {
-            console.log('table inxed', params.rowIndex);
+            this.getSelectedDescription(params.rowIndex);
             this.master.setState({
               showModal:true,
             })
@@ -93,8 +106,8 @@ export class AssetDetails {
         width: 100,
         disableClickEventBubbling: true,
         renderCell: (params) => {
-          const onClick = (params) => {
-              console.log('params',params);
+          const onClick = () => {
+            //console.log('table inxed', params.rowIndex);
           };
     
           return (

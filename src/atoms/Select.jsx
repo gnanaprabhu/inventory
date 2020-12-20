@@ -4,9 +4,7 @@ import { Label } from './Label';
 export class Select extends React.Component {
 
   handleChange = (event) => {
-    console.log('select',event.target.value);
     const { onChange } = this.props;
-    console.log('onchange',this.props);
     onChange && onChange(event);
   }
 
@@ -17,7 +15,7 @@ export class Select extends React.Component {
         {showLabel && <Label value={labelValue} className={labelClass}/>}
         <select name={name} value={value} onChange={this.handleChange}>
         {option.map((data, index) => {
-          return <option key={index} value={data.value}>{data.name}</option>
+          return <option key={index} selected = {data.value === value && 'selected'} value={data.value}>{data.name}</option>
         })};
         </select>
       </div>
