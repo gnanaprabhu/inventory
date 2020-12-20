@@ -52,8 +52,6 @@ export class MainMenu extends React.Component{
   }
 
   handleMenuClick =(menu) => {
-    //const menu =  event.target;
-    console.log('menu',menu);
       const isParentMenu = menu.className.split(' ')[0] === 'first-level';
 
       if(isParentMenu){

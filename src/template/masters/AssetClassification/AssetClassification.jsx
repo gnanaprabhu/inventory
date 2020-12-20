@@ -5,7 +5,7 @@ import { DataGrid } from '../../../organisms/datagrid';
 import './Style.scss';
 
 const handleSearch =(event) => {
-  console.log('search',event)
+  //console.log('search',event)
 }
 const renderAssetSearchbox = () => {
   return(

@@ -11,14 +11,20 @@ export class Form extends React.Component{
     formValues :{},
   };
   
+
   handleChange=(event)=>{
-    console.log('ev',event.target);
     const element = event.target;
     const existingState = {...this.state.formValues};
     existingState[element.name] = element.value;
     this.setState({
       formValues: existingState,
     });
+  }
+
+  renderFormValues = (name,defaultValue) => {
+    const { formValues } = this.state;
+    const value = formValues.hasOwnProperty(name) ? formValues[name] : defaultValue; 
+    return value;
   }
   
   handleCheckboxClick = (event) => {
@@ -28,22 +34,20 @@ export class Form extends React.Component{
     this.setState({
       formValues: existingState,
     });
-
   }
   renderElements = () => {
     const {formList} = this.props;
-    console.log('f',formList);
-    const {formValues} = this.state;
     return formList.map((item,index) => {
+      const {element,value,...remainingProps} = item
       switch(item.element){
         case 'label':
         return <Label key={index}  {...item}/>
         case 'input':
-          return <Input onChange={this.handleChange} value={formValues[item.name]}  key={index} {...item} />
+          return <Input onChange={this.handleChange} value={this.renderFormValues(item.name,value)}  key={index} {...remainingProps} />
         case 'checkbox':
           return <Checkbox name={item.name} id={item.name} onClick={this.handleCheckboxClick} {...item}/>
           case 'select':
-            return <Select onChange={this.handleChange} selected={this.handleChange} key={index} {...item}/>
+            return <Select onChange={this.handleChange} value={this.renderFormValues(item.name,value)} selected={this.handleChange} key={index} {...remainingProps}/>
         default:
           return <Label key={index} value={item.value}/>
       }
@@ -51,7 +55,7 @@ export class Form extends React.Component{
   }
   handleSubmit = () => {
     const { onSubmit } = this.props;
-    onSubmit({...this.state.formValues});
+    onSubmit(this.state.formValues);
   }
   render(){
     const{hideReset,hideSubmit} = this.props;
