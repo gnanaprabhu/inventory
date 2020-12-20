@@ -93,7 +93,7 @@ export class AssetDetails {
           };
     
           return (
-          <div onClick={onClick}>
+          <div className={'form-icon'} onClick={onClick}>
              <EditIcon />
           </div>
           );
@@ -111,7 +111,7 @@ export class AssetDetails {
           };
     
           return (
-            <div onClick={onClick}>
+            <div className={'form-icon'} onClick={onClick}>
                <DeleteIcon />
             </div>
             );
