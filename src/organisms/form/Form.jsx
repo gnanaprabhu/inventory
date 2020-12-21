@@ -59,6 +59,7 @@ export class Form extends React.Component{
   }
   render(){
     const{hideReset,hideSubmit} = this.props;
+    console.log('hide reset', hideReset);
     return (
       <div className="form-wrapper">
         <form onSubmit={(event)=>{event.preventDefault()}}>

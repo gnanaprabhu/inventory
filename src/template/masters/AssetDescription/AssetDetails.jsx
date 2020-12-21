@@ -8,12 +8,24 @@ export class AssetDetails {
   handleBrandSelect = () => {
 
   }
-  getSelectedDescription = (selectedIndex) => {
+  deleteDescription = (selectedIndex) => {
     const { descriptionList } = this.master.state;
-    const selectedDescription = descriptionList[selectedIndex];
+    const newDescriptionList = [...descriptionList];
+    newDescriptionList.splice(selectedIndex,1);
+    this.master.setState({
+      descriptionList:newDescriptionList,
+    });
+  }
+  editDescription= (selectedIndex) => {
+    const selectedDescription = this.getSelecedDescriptionIndex(selectedIndex);
     this.master.setState({
       selectedDescription: selectedDescription,
     });
+  }
+  getSelecedDescriptionIndex = (selectedIndex) => {
+    const { descriptionList } = this.master.state;
+    const selectedDescription = descriptionList[selectedIndex]; 
+    return selectedDescription;
   }
   getAssetDescriptionForm = () => {
     const { selectedDescription } = this.master.state;
@@ -86,7 +98,7 @@ export class AssetDetails {
         disableClickEventBubbling: true,
         renderCell: (params) => {
           const onClick = () => {
-            this.getSelectedDescription(params.rowIndex);
+            this.editDescription(params.rowIndex);
             this.master.setState({
               showModal:true,
             })
@@ -107,6 +119,7 @@ export class AssetDetails {
         disableClickEventBubbling: true,
         renderCell: (params) => {
           const onClick = () => {
+            this.deleteDescription(params.rowIndex);
             //console.log('table inxed', params.rowIndex);
           };
     
