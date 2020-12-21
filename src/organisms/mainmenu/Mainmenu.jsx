@@ -25,6 +25,10 @@ export class MainMenu extends React.Component{
         label:"Asset Description",
         className:"asset-description",
         url:"/asset-description",
+      },{
+        label:"Client Master",
+        className:"client-master",
+        url:"/client-master",
       }]
       },
       {

@@ -1,0 +1,69 @@
+import React from 'react';
+import { Form } from '../../../organisms/form';
+import { DataGrid } from '../../../organisms/datagrid';
+import { Modal } from '../../../organisms/modal';
+import { ClientHandler } from './ClientHandler';
+
+export class ClientMaster extends React.Component{
+  state={
+    showModal:false,
+    descriptionList:[],
+    selectedDescription:{},
+  }
+  constructor(props){
+    super(props);
+    this.clientHandler = new ClientHandler(this); 
+  }
+
+  toggleModal = () => {
+    const {showModal} = this.state;
+    this.setState({
+      showModal:!showModal,
+    })
+   }
+
+  modalContent = () => {
+    return(
+    <Modal title="Client Detail" onToggle={this.toggleModal}>
+      <div className='client-popup'>
+        <Form formList={this.clientHandler.getContactPersonForm()} onSubmit={this.clientHandler.handleContactPersonDetail}/>
+      </div>
+    </Modal>
+    );
+  }
+
+  renderModal = () => {
+    const { showModal } =  this.state;
+    return(
+      <div className="client-modal-container">
+        <div className="client-button-wrapper">
+        <span>Add Client Detail</span>
+        <button className="new-client-button"
+          onClick={ () => {
+            // this.setState({
+            //   selectedDescription:{}
+            // })
+            this.toggleModal();
+            }
+          }>
+            <span>+</span>
+        </button>
+        </div>
+        {showModal && this.modalContent()}
+      </div>
+    );
+  }
+
+  render(){
+    const formList = this.clientHandler.getClientForm();
+    const cols = this.clientHandler.getColumns();
+    const rows = this.clientHandler.getRows();
+  return (
+    <div>
+      <Form formList={formList} hideSubmit={true} hideReset={true}/>
+      {this.renderModal()}
+      <DataGrid cols={cols} rows={rows}/>
+    </div> 
+  );
+  }
+}
