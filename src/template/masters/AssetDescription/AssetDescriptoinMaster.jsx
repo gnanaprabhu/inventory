@@ -110,7 +110,16 @@ export class AssetDescription extends React.Component {
     }
     return(
       <div className="assest-description-container">
-        <h2 className="header">Asset Description Master</h2>
+        <div className="assest-header-wrapper">
+          <h2 className="header">Asset Description Master</h2>
+          <button
+            type="button"
+            className="outline submit-button"
+            onClick={()=>{
+              console.log("form submit")
+            }}
+          >save</button>
+        </div>
         <Select {...selectProps}/>
         {this.renderModal()}
         <DataGrid cols={cols} rows={rows}/>
