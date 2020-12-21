@@ -1,4 +1,4 @@
- .assest-description-container {
+ .client-master-container {
 
   .header {
     display: flex;
@@ -6,13 +6,25 @@
     font-weight: 700;
     color: #798489;
   }
-  .select-box-wrapper{
+  .text-box-wrapper {
+    margin-right: 24px;
     display: flex;
     flex-wrap: wrap;
-    label {
-      margin-right: 8px;
-    }
+    margin-bottom: 24px;
+
+  label {
+    margin-right: 8px;
   }
+} 
+.select-box-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  margin-right: 24px;
+  label {
+    margin-right: 8px;
+  }
+}
   .MuiDataGrid-root {
     border: none;
 
@@ -79,15 +91,15 @@
     }
   }
 }
-.client-modal-container {
+.description-modal-container {
   display: flex;
   margin: 32px 0;
 
-  .client-button-wrapper {
+  .description-button-wrapper {
     font-size: 14px;
     font-weight: bold;
   
-    .new-client-button {
+    .description-button {
       background: #fff;
       font-size: 14px;
       border: 2px solid #dededf;
@@ -100,14 +112,13 @@
   }
 }
 
-.client-popup {
+.assest-popup {
   padding: 24px;
   .form-wrapper .form-filed-wrapper {
     flex-direction: column;
     align-items: flex-start;
 
-    .text-box-wrapper,
-    .select-box-wrapper {
+    .text-box-wrapper {
       margin-top: 16px;
     }
     label {

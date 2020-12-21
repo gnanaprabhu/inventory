@@ -3,6 +3,7 @@ import { Form } from '../../../organisms/form';
 import { DataGrid } from '../../../organisms/datagrid';
 import { Modal } from '../../../organisms/modal';
 import { ClientHandler } from './ClientHandler';
+import './Style.scss'
 
 export class ClientMaster extends React.Component{
   state={
@@ -59,7 +60,10 @@ export class ClientMaster extends React.Component{
     const cols = this.clientHandler.getColumns();
     const rows = this.clientHandler.getRows();
   return (
-    <div>
+    <div className="client-master-container">
+        <div className="client-master-header-wrapper">
+          <h2 className="header">Client Master</h2>
+        </div>
       <Form formList={formList} hideSubmit={true} hideReset={true}/>
       {this.renderModal()}
       <DataGrid cols={cols} rows={rows}/>
