@@ -64,7 +64,7 @@
   .assest-header-wrapper {
     display: flex;
     justify-content: space-between;
-    .submit-button {
+    .save-button {
       height: 40px;
       padding: 8px 20px;
       background: #F36E44;
@@ -76,6 +76,10 @@
       outline: none !important;
       text-align: center;
       border: 1px solid;
+      &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
     }
   }
 }

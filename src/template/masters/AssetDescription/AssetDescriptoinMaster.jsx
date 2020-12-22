@@ -16,6 +16,7 @@ export class AssetDescription extends React.Component {
     showModal:false,
     descriptionList:[],
     selectedDescription:{},
+    isSubmitEnable: false,
   }
 
   handleChange = () => {
@@ -89,6 +90,7 @@ export class AssetDescription extends React.Component {
   render(){
     const cols = this.assetDetails.getAssetColumns();
     const rows = this.assetDetails.getAssetRows();
+    const { isSubmitEnable } = this.state;
 
     const selectProps = {
       showLabel:true,
@@ -114,7 +116,7 @@ export class AssetDescription extends React.Component {
           <h2 className="header">Asset Description Master</h2>
           <button
             type="button"
-            className="outline submit-button"
+            className={`outline save-button ${!isSubmitEnable && 'disabled'}`}
             onClick={()=>{
               console.log("form submit")
             }}

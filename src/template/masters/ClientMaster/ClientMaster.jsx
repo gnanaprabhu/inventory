@@ -10,6 +10,7 @@ export class ClientMaster extends React.Component{
     showModal:false,
     descriptionList:[],
     selectedDescription:{},
+    isSubmitEnable: false,
   }
   constructor(props){
     super(props);
@@ -59,10 +60,18 @@ export class ClientMaster extends React.Component{
     const formList = this.clientHandler.getClientForm();
     const cols = this.clientHandler.getColumns();
     const rows = this.clientHandler.getRows();
+    const { isSubmitEnable } = this.state;
   return (
     <div className="client-master-container">
         <div className="client-master-header-wrapper">
           <h2 className="header">Client Master</h2>
+          <button
+            type="button"
+            className={`outline save-button ${!isSubmitEnable && 'disabled'}`}
+            onClick={()=>{
+              console.log("form submit")
+            }}
+          >save</button>
         </div>
       <Form formList={formList} hideSubmit={true} hideReset={true}/>
       {this.renderModal()}
