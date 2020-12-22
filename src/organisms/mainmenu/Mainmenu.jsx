@@ -29,6 +29,10 @@ export class MainMenu extends React.Component{
         label:"Client Master",
         className:"client-master",
         url:"/client-master",
+      },{
+        label:"Vendor Master",
+        className:"vendor-master",
+        url:"/vendor-master",
       }]
       },
       {
