@@ -10,6 +10,7 @@ export class VendorMaster extends React.Component{
     showModal:false,
     contactPersonList:[],
     selectedPerson:{},
+    isSubmitEnable: false,
   }
   constructor(props){
     super(props);
@@ -59,10 +60,18 @@ export class VendorMaster extends React.Component{
     const formList = this.vendorHandler.getVendorForm();
     const cols = this.vendorHandler.getColumns();
     const rows = this.vendorHandler.getRows();
+    const { isSubmitEnable } =  this.state;
   return (
     <div className="vendor-master-container">
         <div className="vendor-master-header-wrapper">
           <h2 className="header">Vendor Master</h2>
+          <button
+            type="button"
+            className={`outline save-button ${!isSubmitEnable && 'disabled'}`}
+            onClick={()=>{
+              console.log("form submit")
+            }}
+          >save</button>
         </div>
       <Form formList={formList} hideSubmit={true} hideReset={true}/>
       {this.renderModal()}
