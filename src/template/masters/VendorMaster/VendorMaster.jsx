@@ -2,6 +2,7 @@ import React from 'react';
 import { Form } from '../../../organisms/form';
 import { DataGrid } from '../../../organisms/datagrid';
 import { Modal } from '../../../organisms/modal';
+import { FloatingMenu } from '../../../organisms/floatingMenu';
 import { VendorHandler } from './VendorHandler';
 import './Style.scss'
 
@@ -62,6 +63,7 @@ export class VendorMaster extends React.Component{
     const rows = this.vendorHandler.getRows();
     const { isSubmitEnable } =  this.state;
   return (
+    <>
     <div className="vendor-master-container">
         <div className="vendor-master-header-wrapper">
           <h2 className="header">Vendor Master</h2>
@@ -76,7 +78,9 @@ export class VendorMaster extends React.Component{
       <Form formList={formList} hideSubmit={true} hideReset={true}/>
       {this.renderModal()}
       <DataGrid cols={cols} rows={rows}/>
-    </div> 
+    </div>
+    <FloatingMenu />
+    </>
   );
   }
 }
