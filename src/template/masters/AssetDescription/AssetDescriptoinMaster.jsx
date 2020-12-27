@@ -83,9 +83,6 @@ export class AssetDescription extends React.Component {
       </div>
     );
   }
-  renderGrid = () => {
-    
-  }
 
   render(){
     const cols = this.assetDetails.getAssetColumns();
@@ -124,7 +121,7 @@ export class AssetDescription extends React.Component {
         </div>
         <Select {...selectProps}/>
         {this.renderModal()}
-        <DataGrid cols={cols} rows={rows}/>
+        <DataGrid cols={cols} rows={rows} handleRowClick={(params)=>{console.log('row==>',params)}}/>
       </div>
     )
   }
