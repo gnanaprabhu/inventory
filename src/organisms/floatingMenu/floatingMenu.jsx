@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { PlusIcon } from '../../icons';
+
 import './style.scss';
 
 export class FloatingMenu extends React.Component{
@@ -22,11 +24,15 @@ export class FloatingMenu extends React.Component{
             this.toggleMenu();
           }}
         >        
-          <div>+</div>
+          <div className={`fab-icon ${showMenu ? 'active' : ''}`}><PlusIcon /></div>
       </button>
       <div className={`child ${showMenu ? 'active' : ''}`}>
         <i className='text' />
-        <a className='item'>-</a>
+        <a className='item'
+          onClick={()=>{
+            console.log('event');
+          }}
+        >-</a>
       </div>
     </div>
      );

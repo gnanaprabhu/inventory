@@ -1,0 +1,65 @@
+.order-list-container {
+    .header {
+      display: flex;
+      font-size: 20px;
+      font-weight: 700;
+      color: #798489;
+    }
+    .select-box-wrapper{
+      display: flex;
+      flex-wrap: wrap;
+      label {
+        margin-right: 8px;
+      }
+    }
+    .MuiDataGrid-root {
+      border: none;
+      margin-top:32px;
+  
+      .MuiDataGrid-cell,
+      .MuiDataGrid-colCell {
+        text-align: left;
+        padding-left: 6px;
+        font-size: 12px;
+        font-weight: bold;
+        min-height: 40px !important;
+        max-height: 40px !important;
+        display: flex;
+        align-items: center;
+      }
+      .MuiDataGrid-cell {
+        .form-icon {
+          display: flex;
+          svg {
+            align-items: center;
+            display: flex;
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      .MuiDataGrid-columnSeparator {
+        display: none;
+      }
+      .MuiDataGrid-row,
+      .MuiDataGrid-colCell-draggable {
+        min-height: 40px !important;
+        max-height: 40px !important;
+      }
+      .MuiDataGrid-columnsContainer {
+        background: #37474F;  
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .MuiDataGrid-sortIcon {
+        color: #fff;
+      }
+      .MuiDataGrid-colCell:focus,
+      .MuiDataGrid-cell:focus {
+        outline: none;
+      }
+    }
+  }
+  
+  

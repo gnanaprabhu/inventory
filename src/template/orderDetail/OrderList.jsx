@@ -1,7 +1,9 @@
 import React from 'react';
 import { Select } from '../../atoms';
 import { DataGrid } from '../../organisms/datagrid';
+import { FloatingMenu } from '../../organisms/floatingMenu';
 import { OrderHandler } from './OrderHandler';
+import './Style.scss'
 
 
 export class OrderList extends React.Component {
@@ -36,12 +38,13 @@ export class OrderList extends React.Component {
       ]
     }
     return(
-      <div className="assest-description-container">
-        <div className="assest-header-wrapper">
+      <div className="order-list-container">
+        <div className="order-list-wrapper">
           <h2 className="header">Client Order Detail</h2>
         </div>
         <Select {...selectProps}/>
         <DataGrid cols={cols} rows={rows} handleRowClick={(params)=>{console.log('row==>',params)}}/>
+        <FloatingMenu />
       </div>
     )
   }
