@@ -49,7 +49,6 @@ export class AssetDescription extends React.Component {
         descriptionList:[...descriptionList,{id:descriptionList.length+1,...formValues}],
       },this.toggleModal());
     }
-
   }
 
   modalContent = () => {

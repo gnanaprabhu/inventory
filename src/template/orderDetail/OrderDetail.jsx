@@ -5,17 +5,73 @@ import { GridWithForm } from '../../organisms/gridWithForm/GridWithForm';
 import { DeleteIcon, EditIcon }  from '../../icons';
 
 export class OrderDetail extends React.Component{
+
+  state={
+    descriptionList:[],
+    selectedDescription:{},
+    showModal:false,
+  }
+
+  toggleModal = () => {
+    const {showModal} = this.state;
+    this.setState({
+      showModal:!showModal,
+    })
+   }
   
   getDescriptionRows = () => {
-    // const { descriptionList } = this.master.state;
-    // return descriptionList;
-    return [];
+    const { descriptionList } = this.state;
+    return descriptionList;
   }
+
+  deleteDescription = (selectedIndex) => {
+    const { descriptionList } = this.state;
+    const newDescriptionList = [...descriptionList];
+    newDescriptionList.splice(selectedIndex,1);
+    this.setState({
+      descriptionList:newDescriptionList,
+    });
+  }
+  getSelecedDescriptionIndex = (selectedIndex) => {
+    const { descriptionList } = this.state;
+    const selectedDescription = descriptionList[selectedIndex]; 
+    return selectedDescription;
+  }
+  editDescription= (selectedIndex) => {
+    const selectedDescription = this.getSelecedDescriptionIndex(selectedIndex);
+    this.setState({
+      selectedDescription: selectedDescription,
+    });
+  }
+
+  handleFormSubmit = (formValues) =>{
+    const { descriptionList, selectedDescription } = this.state;
+    if(selectedDescription.id){
+       const assetDescriptionList =  descriptionList.map(item => {
+        if(item.id === selectedDescription.id){
+           for(const key in formValues){
+             item[key] = formValues[key];
+           }
+        }
+        return item;
+       });
+     this.setState({
+       descriptionList:assetDescriptionList,
+     });
+    }else{
+      this.setState({
+        descriptionList:[...descriptionList,{id:descriptionList.length+1,...formValues}],
+      });
+    }
+  }
+
   getDescriptionColumns = () => {
     const columns = [
-      { field: 'brand', headerName: 'Brand', width: 150 },
-      { field: 'asset-modal-no', headerName: 'Asset model No', width: 150 },
-      { field: 'asset-description', headerName:'Asset description',width:150 },
+      { field: 'item-description', headerName: 'Description', width: 150 },
+      { field: 'order-qty', headerName: 'Qty', width: 150 },
+      { field: 'order-new-qty', headerName:'New Qty',width:150 },
+      { field: 'order-rate', headerName:'Rate',width:150 },
+      { field: 'order-total-amount', headerName:'Total Amount',width:150 },
       {
         field: "edit",
         headerName: "Edit",
@@ -24,10 +80,9 @@ export class OrderDetail extends React.Component{
         disableClickEventBubbling: true,
         renderCell: (params) => {
           const onClick = () => {
-            // this.editDescription(params.rowIndex);
-            // this.master.setState({
-            //   showModal:true,
-            // })
+            console.log('edit clicked');
+            this.editDescription(params.rowIndex);
+            
           };
     
           return (
@@ -45,7 +100,8 @@ export class OrderDetail extends React.Component{
         disableClickEventBubbling: true,
         renderCell: (params) => {
           const onClick = () => {
-            // this.deleteDescription(params.rowIndex);
+            console.log('delete clicked');
+            this.deleteDescription(params.rowIndex);
             //console.log('table inxed', params.rowIndex);
           };
     
@@ -58,6 +114,69 @@ export class OrderDetail extends React.Component{
       },
     ];
     return columns;
+  }
+
+  getNewOrderDescriptionForm = () => {
+    const form =[
+      {
+        element:'input',
+        showLabel:true,
+        containerClass:'',
+        labelValue:'Item Description',
+        labelClass:'item-description-label',
+        type:'text',
+        className:'item-description-value',
+        placeholder:'',
+        name:'item-description',
+        value: '',
+      },
+      {
+       element:'input',
+       showLabel:true,
+       containerClass:'',
+       labelValue:'Order Qty',
+       labelClass:'order-qty-label',
+       type:'text',
+       className:'order-qty-value',
+       placeholder:'',
+       name:'order-qty',
+       value: '',
+     },{
+      element:'input',
+      showLabel:true,
+      containerClass:'',
+      labelValue:'New Qty',
+      labelClass:'order-new-qty-label',
+      type:'text',
+      className:'order-new-qty-value',
+      placeholder:'',
+      name:'order-new-qty',
+      value: '',
+    },{
+      element:'input',
+      showLabel:true,
+      containerClass:'',
+      labelValue:'Rate',
+      labelClass:'order-rate-label',
+      type:'text',
+      className:'order-rate-value',
+      placeholder:'',
+      name:'order-rate',
+      value:  '',
+    },
+    {
+      element:'input',
+      showLabel:true,
+      containerClass:'',
+      labelValue:'Total Amount',
+      labelClass:'order-total-amount-label',
+      type:'text',
+      className:'order-total-amount-value',
+      placeholder:'',
+      name:'order-total-amount',
+      value:  '',
+    }];
+    return form;
   }
 
   getNewOrderForm = () => {
@@ -144,12 +263,21 @@ export class OrderDetail extends React.Component{
    );
   }
   allCardsData = () => {
+    const { showModal } = this.state;
     const data = [{
       children: this.renderNewOrderForm(),
       label: 'New Order',
       id:1,
   },{
-    children: <GridWithForm title="Add Order Description" cols={this.getDescriptionColumns()} rows={this.getDescriptionRows()}/>,
+    children: <GridWithForm 
+    showModal={showModal} 
+    title="Add Order Description" 
+    handleFormSubmit={this.handleFormSubmit} 
+    formList={this.getNewOrderDescriptionForm()} 
+    cols={this.getDescriptionColumns()} 
+    rows={this.getDescriptionRows()}
+    handleToggleModal={this.toggleModal}
+    />,
     label: 'sample',
     id:2,
   }];

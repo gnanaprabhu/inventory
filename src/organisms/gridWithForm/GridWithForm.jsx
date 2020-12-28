@@ -4,39 +4,34 @@ import { Form } from '../form/Form';
 import { Modal } from '../modal/Modal';
 
 export class GridWithForm extends React.Component{
-  state={
-    showModal:false,
+
+  handleFormSubmit = (formValues) => {
+    const { handleFormSubmit,handleToggleModal } = this.props;
+    handleFormSubmit(formValues);
+    handleToggleModal && handleToggleModal();
   }
-
-  toggleModal = () => {
-    const {showModal} = this.state;
-    this.setState({
-      showModal:!showModal,
-    })
-   }
-
   modalContent = () => {
-  const { formList,modalTitle, handleFormSubmit } = this.props;
+  const { formList,modalTitle,handleToggleModal } = this.props;
   return(
-  <Modal title={modalTitle} onToggle={this.toggleModal}>
+  <Modal title={modalTitle} onToggle={handleToggleModal}>
     <div className='modal-container'>
-      <Form formList={formList} onSubmit={handleFormSubmit}/>
+      <Form formList={formList} onSubmit={this.handleFormSubmit}/>
     </div>
   </Modal>
   );
   }
 
   renderModal = () => {
-    const { showModal,handleNewClick } =  this.state;
-    const { title } = this.props;
+    // const { handleNewClick } =  this.state;
+    const { title,showModal, handleToggleModal } = this.props;
     return(
       <div className="modal-container">
         <div className="button-wrapper">
         <span>{title}</span>
         <button className="description-button"
           onClick={ () => {
-            this.toggleModal();
-            handleNewClick();
+            handleToggleModal && handleToggleModal();
+            // handleNewClick && handleNewClick();
             }
           }>
             <span>+</span>
@@ -46,12 +41,14 @@ export class GridWithForm extends React.Component{
       </div>
     );
   }
+
   renderDataGrid =() =>{
     const {cols,rows} = this.props;
     return(
     <DataGrid cols={cols} rows={rows} handleRowClick={(params)=>{console.log('row==>',params)}}/>
     );
   }
+
   render(){
     return (
       <div>
