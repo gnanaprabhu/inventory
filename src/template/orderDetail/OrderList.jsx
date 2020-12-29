@@ -21,7 +21,7 @@ export class OrderList extends React.Component {
 
     const selectProps = {
       showLabel:true,
-      labelValue:'Search Order',
+      labelValue:'Client Name',
       labelClass:'searc-order',
       onChange:this.handleChange,
       option: [

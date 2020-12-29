@@ -12,12 +12,11 @@ export const CardsGroup = (props) => {
         {allCardsData.map(cardData => (
           <li
             key={cardData.id}
-            className="cards-group-list-item"
+            className={`cards-group-list-item ${cardData.customClasses}`}
             tabIndex={-1}
             tab-id={cardData.id}
           >
             <Card
-              customClasses={cardData.customClasses || ''}
               id={cardData.id}
               readyToRender={!cardData.loading}
               title={cardData.label}

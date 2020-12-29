@@ -280,6 +280,8 @@ export class OrderDetail extends React.Component{
     />,
     label: 'sample',
     id:2,
+    customClasses: 'width-times-2'
+
   }];
   return data;
   }
