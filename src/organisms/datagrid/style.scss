@@ -1,0 +1,20 @@
+.MuiDataGrid-row {
+  &.Mui-even { 
+    background-color: #fff;
+  }
+  &.Mui-odd {
+    background-color: #F4F4F4;
+  }
+
+}
+
+.MuiDataGrid-columnsContainer {
+  background: #F4F4F4;  
+  color: #000;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  .MuiDataGrid-colCellTitle {
+    font-size: 14px !important;
+    font-weight: bold !important;
+  }
+}
