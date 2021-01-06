@@ -3,10 +3,10 @@ import React from 'react';
 import { Loader } from '../../loader/Loader';
 
 const Card = (props) => {
-  const { children, customClasses, id, readyToRender, title } = props;
+  const { children, id, readyToRender, title } = props;
 
   return (
-    <div className={`card ${customClasses}`} id={id}>
+    <div className={`card`} id={id}>
       {title && (
         <h4 className="card-header">
           {title}

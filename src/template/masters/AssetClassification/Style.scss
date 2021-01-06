@@ -60,7 +60,6 @@
         text-align: left;
         padding-left: 6px;
         font-size: 12px;
-        font-weight: bold;
         min-height: 40px !important;
         max-height: 40px !important;
         display: flex;
@@ -73,12 +72,6 @@
       .MuiDataGrid-colCell-draggable {
         min-height: 40px !important;
         max-height: 40px !important;
-      }
-      .MuiDataGrid-columnsContainer {
-        background: #37474F;  
-        color: #fff;
-        font-size: 12px;
-        font-weight: bold;
       }
       .MuiDataGrid-sortIcon {
         color: #fff;

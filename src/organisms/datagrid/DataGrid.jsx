@@ -1,5 +1,6 @@
 import React from 'react';
 import { DataGrid as DataGridImpo, RowsProp, ColDef } from '@material-ui/data-grid';
+import './style.scss';
 
 
 const rows: RowsProp = [
@@ -27,7 +28,7 @@ export class DataGrid extends React.Component {
   render() {
     const { rows,cols,hideFooter,hideFooterPagination,hideFooterRowCount,hideFooterSelectedRowCount,handleRowClick } = this.props;
     return (
-      <div style={{ height: 300, width: '100%' }}>
+      <div style={{ height: 300}}>
         <DataGridImpo rows={rows} 
           columns={cols} 
           hideFooterSelectedRowCount={hideFooterSelectedRowCount} 

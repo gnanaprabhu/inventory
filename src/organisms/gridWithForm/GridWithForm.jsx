@@ -14,7 +14,7 @@ export class GridWithForm extends React.Component{
   const { formList,modalTitle,handleToggleModal } = this.props;
   return(
   <Modal title={modalTitle} onToggle={handleToggleModal}>
-    <div className='modal-container'>
+    <div className='popup-modal-container'>
       <Form formList={formList} onSubmit={this.handleFormSubmit}/>
     </div>
   </Modal>
