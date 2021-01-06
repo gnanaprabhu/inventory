@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 /** * Import Pages ** */
+
 import { AssetClassification } from "./template/masters/AssetClassification/AssetClassification";
 import { BrandMaster } from './template/masters/Master/BrandMaster';
 import { AssetDescription } from './template/masters/AssetDescription/AssetDescriptoinMaster';
@@ -13,13 +14,13 @@ import { OrderDetail } from './template/orderDetail/OrderDetail';
 
 export const MainRouter = props => (
     <Switch>
-        <Route  path="/asset-classfication" render={() => <AssetClassification {...props} />} />
-        <Route  path="/brand-master" render={() => <BrandMaster {...props}/>}  />
-        <Route  path="/asset-description" render={()=><AssetDescription {...props}/> } />
-        <Route  path="/client-master" render={() => <ClientMaster {...props}/>} />
-        <Route  path="/vendor-master" render={() => <VendorMaster {...props}/>} />
-        <Route  path="/order-list" render={() => <OrderList {...props}/>} />
-        <Route path="/order-detail"  render={ () => <OrderDetail {...props}/>} />
+        <Route exact path="/asset-classfication" render={props => <AssetClassification {...props} />} />
+        <Route exact path="/brand-master" render={props => <BrandMaster {...props}/>}  />
+        <Route exact path="/asset-description" render={props=><AssetDescription {...props}/> } />
+        <Route exact path="/client-master" render={props => <ClientMaster {...props}/>} />
+        <Route exact path="/vendor-master" render={props => <VendorMaster {...props}/>} />
+        <Route exact path="/order-list" render={props => <OrderList {...props}/>} />
+        <Route exact path="/order-detail"  render={ props => <OrderDetail {...props}/>} />
     </Switch>
 )
 
