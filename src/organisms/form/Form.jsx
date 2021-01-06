@@ -58,7 +58,7 @@ export class Form extends React.Component{
     onSubmit(this.state.formValues);
   }
   render(){
-    const{hideReset,hideSubmit} = this.props;
+    const{hideReset,hideSubmit,submitLabel} = this.props;
     console.log('hide reset', hideReset);
     return (
       <div className="form-wrapper">
@@ -80,7 +80,7 @@ export class Form extends React.Component{
           </button>
           }
           {!hideSubmit && <button className="submit-button" type="submit" onClick={this.handleSubmit}>
-            Submit
+            {submitLabel ? submitLabel : `Submit`}
           </button>
           }
           </div>

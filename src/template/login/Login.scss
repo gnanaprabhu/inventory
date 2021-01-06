@@ -1,0 +1,43 @@
+.login-container{
+
+    .login-company-wrapper{
+      width: 500px;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #35363a;
+
+    .login-company-logo{
+      padding:30px;
+      .company-logo{
+        font-size: 20px;
+        text-transform: capitalize;
+        font-weight: bold;
+        color: #fff;
+        text-align: center;
+      }
+    }
+    .login-form-wrapper{
+      background-color: #546066;
+      padding: 30px;
+      .form-filed-wrapper{
+        display: block;
+        .text-box-wrapper{
+          margin:20px;
+          input{
+            height: 50px;
+            width: 100%;
+          }
+
+        }
+      }
+      .form-button-wrapper{
+        justify-content: center;
+      }
+      .forget-password{
+        text-align: center;
+      }
+    }
+}
