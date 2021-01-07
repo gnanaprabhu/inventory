@@ -43,9 +43,13 @@ export class MainMenu extends React.Component{
       icon:<ArrowIcon/>,
       isOpen:false,
       nodes:[{
-        label:"Test",
+        label:"Order Detail",
         className:"",
-        url:"/home",
+        url:"/order-detail",
+      },{
+        label:"Order List",
+        className:"",
+        url:"/order-list",
       }]
       },
       {
