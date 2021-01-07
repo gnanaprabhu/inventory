@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Card from './card/Card';
-// import './CardsGroup.scss';
+import './CardsGroup.scss';
 
 export const CardsGroup = (props) => {
   const { allCardsData, classes } = props;

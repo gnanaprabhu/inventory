@@ -3,6 +3,7 @@ import { Select } from '../../../atoms';
 import { Modal } from '../../../organisms/modal';
 import { Form } from '../../../organisms/form';
 import { DataGrid } from '../../../organisms/datagrid';
+import { CardsGroup } from '../../../organisms/card/CardsGroup';
 import { AssetDetails} from './AssetDetails';
 import './Style.scss'
 
@@ -82,12 +83,18 @@ export class AssetDescription extends React.Component {
       </div>
     );
   }
-
-  render(){
+  renderAssetData = () => {
     const cols = this.assetDetails.getAssetColumns();
     const rows = this.assetDetails.getAssetRows();
-    const { isSubmitEnable } = this.state;
+    return (
+      <>
+        {this.renderModal()}
+        <DataGrid cols={cols} rows={rows} handleRowClick={(params)=>{console.log('row==>',params)}}/>
+      </>
+    )
+  }
 
+  allCardsData = () => {
     const selectProps = {
       showLabel:true,
       labelValue:'Asset Classificaiton',
@@ -106,6 +113,23 @@ export class AssetDescription extends React.Component {
         },
       ]
     }
+    const data = [
+      {
+      children: <Select {...selectProps}/>,
+      label: 'assest description',
+      id:1,
+   },
+     {
+      children: this.renderAssetData(),
+      label: 'table',
+      id:2,
+     customClasses: 'width-times-2'
+   }
+ ];
+  return data;
+  }
+  render(){
+    const { isSubmitEnable } = this.state;
     return(
       <div className="assest-description-container">
         <div className="assest-header-wrapper">
@@ -118,9 +142,7 @@ export class AssetDescription extends React.Component {
             }}
           >save</button>
         </div>
-        <Select {...selectProps}/>
-        {this.renderModal()}
-        <DataGrid cols={cols} rows={rows} handleRowClick={(params)=>{console.log('row==>',params)}}/>
+        <CardsGroup allCardsData={this.allCardsData()} />
       </div>
     )
   }
