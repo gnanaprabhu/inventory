@@ -3,6 +3,7 @@ import { Form } from '../../../organisms/form';
 import { DataGrid } from '../../../organisms/datagrid';
 import { Modal } from '../../../organisms/modal';
 import { ClientHandler } from './ClientHandler';
+import { CardsGroup } from '../../../organisms/card/CardsGroup';
 import './Style.scss'
 
 export class ClientMaster extends React.Component{
@@ -55,11 +56,40 @@ export class ClientMaster extends React.Component{
       </div>
     );
   }
-
-  render(){
+  renderNewOrderForm = () => {
     const formList = this.clientHandler.getClientForm();
+    return ( <div className='new-order-container'>
+         <Form formList={formList} hideSubmit={true} hideReset={true}/>
+       </div>
+    );
+   }
+   renderAssetData = () => {
     const cols = this.clientHandler.getColumns();
     const rows = this.clientHandler.getRows();
+    return (
+      <>
+        {this.renderModal()}
+        <DataGrid cols={cols} rows={rows}/> 
+      </>
+    )
+  }
+  allCardsData = () => {
+    const data = [
+      {
+      children: this.renderNewOrderForm(),
+      label: 'Clint-master',
+      id:1,
+   },
+     {
+      children: this.renderAssetData(),
+      label: 'AssetData',
+      id:2,
+     customClasses: 'width-times-2'
+   }
+ ];
+  return data;
+  }
+  render(){
     const { isSubmitEnable } = this.state;
   return (
     <div className="client-master-container">
@@ -73,9 +103,7 @@ export class ClientMaster extends React.Component{
             }}
           >save</button>
         </div>
-      <Form formList={formList} hideSubmit={true} hideReset={true}/>
-      {this.renderModal()}
-      <DataGrid cols={cols} rows={rows}/>
+      <CardsGroup allCardsData={this.allCardsData()} />
     </div> 
   );
   }

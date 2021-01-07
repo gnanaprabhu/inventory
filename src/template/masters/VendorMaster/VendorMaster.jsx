@@ -3,6 +3,7 @@ import { Form } from '../../../organisms/form';
 import { DataGrid } from '../../../organisms/datagrid';
 import { Modal } from '../../../organisms/modal';
 import { FloatingMenu } from '../../../organisms/floatingMenu';
+import { CardsGroup } from '../../../organisms/card/CardsGroup';
 import { VendorHandler } from './VendorHandler';
 import './Style.scss'
 
@@ -56,11 +57,41 @@ export class VendorMaster extends React.Component{
       </div>
     );
   }
-
-  render(){
+  renderNewOrderForm = () => {
     const formList = this.vendorHandler.getVendorForm();
+    return ( 
+        <div className='new-order-container'>
+         <Form formList={formList} hideSubmit={true} hideReset={true}/>
+       </div>
+    );
+   }
+   renderAssetData = () => {
     const cols = this.vendorHandler.getColumns();
     const rows = this.vendorHandler.getRows();
+    return (
+      <>
+        {this.renderModal()}
+        <DataGrid cols={cols} rows={rows}/>
+      </>
+    )
+  }
+  allCardsData = () => {
+    const data = [
+      {
+      children: this.renderNewOrderForm(),
+      label: 'vendor-master',
+      id:1,
+   },
+     {
+      children: this.renderAssetData(),
+      label: 'AssetData',
+      id:2,
+     customClasses: 'width-times-2'
+   }
+ ];
+  return data;
+  }
+  render(){
     const { isSubmitEnable } =  this.state;
   return (
     <>
@@ -75,9 +106,7 @@ export class VendorMaster extends React.Component{
             }}
           >save</button>
         </div>
-      <Form formList={formList} hideSubmit={true} hideReset={true}/>
-      {this.renderModal()}
-      <DataGrid cols={cols} rows={rows}/>
+      <CardsGroup allCardsData={this.allCardsData()} />
     </div>
     <FloatingMenu />
     </>

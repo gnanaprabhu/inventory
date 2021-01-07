@@ -3,6 +3,7 @@ import { Select } from '../../atoms';
 import { DataGrid } from '../../organisms/datagrid';
 import { FloatingMenu } from '../../organisms/floatingMenu';
 import { OrderHandler } from './OrderHandler';
+import { CardsGroup } from '../../organisms/card/CardsGroup';
 import './Style.scss'
 
 
@@ -14,11 +15,16 @@ export class OrderList extends React.Component {
   state ={
     orderList:[],
   }
-
-  render(){
+  renderAssetData = () => {
     const cols = this.orderHandler.getOrderColumns();
     const rows = this.orderHandler.getOrderRows();
-
+    return (
+      <>
+       <DataGrid cols={cols} rows={rows} handleRowClick={(params)=>{console.log('row==>',params)}}/>
+      </>
+    )
+  }
+  allCardsData = () => {
     const selectProps = {
       showLabel:true,
       labelValue:'Client Name',
@@ -37,13 +43,30 @@ export class OrderList extends React.Component {
         },
       ]
     }
-    return(
+    const data = [
+      {
+      children: <Select {...selectProps}/>,
+      label: 'order list',
+      id:1,
+   },
+     {
+      children: this.renderAssetData(),
+      label: 'AssetData',
+      id:2,
+     customClasses: 'width-times-2'
+   }
+ ];
+ return data;
+}
+
+  render(){
+ 
+    return (
       <div className="order-list-container">
         <div className="order-list-wrapper">
           <h2 className="header">Client Order Detail</h2>
         </div>
-        <Select {...selectProps}/>
-        <DataGrid cols={cols} rows={rows} handleRowClick={(params)=>{console.log('row==>',params)}}/>
+        <CardsGroup allCardsData={this.allCardsData()} />
         <FloatingMenu />
       </div>
     )
