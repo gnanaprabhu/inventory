@@ -1,9 +1,9 @@
 /** * Import libraries ** */
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect  } from 'react-router-dom';
 
 /** * Import Pages ** */
-
+import { MainMenu } from './organisms/mainmenu';
 import { AssetClassification } from "./template/masters/AssetClassification/AssetClassification";
 import { BrandMaster } from './template/masters/Master/BrandMaster';
 import { AssetDescription } from './template/masters/AssetDescription/AssetDescriptoinMaster';
@@ -11,16 +11,48 @@ import { ClientMaster } from './template/masters/ClientMaster/ClientMaster';
 import { VendorMaster } from './template/masters/VendorMaster/VendorMaster';
 import { OrderList } from './template/orderDetail/OrderList';
 import { OrderDetail } from './template/orderDetail/OrderDetail';
+import { Login } from './template/login/Login';
+
+const PrivateRoute = ({Component,...rest}) => {
+    if(rest.path !== '/login'){
+        return(
+            <>
+            <header className="header">
+              <div className="header-container">
+                  <div className="company-logo">win technologies</div>
+                <div>
+                  <button type="button" className="login-button">
+                      Login
+                  </button>
+                </div>
+              </div>
+            </header>
+            <div className="main-container">
+              <div className="menu">
+                <MainMenu/>
+              </div>
+              <div className="page-container">
+              <Route {...rest} render={props => <Component {...props} />} />
+              </div>
+            </div>
+           </>
+        )
+    }else{
+       return <Route exact path="/login" render={props => <Login {...props}/>}  />
+    }
+}
 
 export const MainRouter = props => (
     <Switch>
-        <Route exact path="/asset-classfication" render={props => <AssetClassification {...props} />} />
-        <Route exact path="/brand-master" render={props => <BrandMaster {...props}/>}  />
-        <Route exact path="/asset-description" render={props=><AssetDescription {...props}/> } />
-        <Route exact path="/client-master" render={props => <ClientMaster {...props}/>} />
-        <Route exact path="/vendor-master" render={props => <VendorMaster {...props}/>} />
-        <Route exact path="/order-list" render={props => <OrderList {...props}/>} />
-        <Route exact path="/order-detail"  render={ props => <OrderDetail {...props}/>} />
+        <PrivateRoute component={AssetClassification} exact path="/home"  />
+        <PrivateRoute component={Login} exact path="/login"  />
+        <PrivateRoute component={AssetClassification} exact path="/asset-classfication"  />
+        <PrivateRoute component={BrandMaster} exact path="/brand-master"  />
+        <PrivateRoute component={AssetDescription} exact path="/asset-description" />
+        <PrivateRoute component={ClientMaster} exact path="/client-master"  />
+        <PrivateRoute component={VendorMaster} exact path="/vendor-master"  />
+        <PrivateRoute component={OrderList} exact path="/order-list"  />
+        <PrivateRoute component={OrderDetail} exact path="/order-detail" />
     </Switch>
 )
 

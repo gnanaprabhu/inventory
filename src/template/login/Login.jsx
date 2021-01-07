@@ -7,6 +7,7 @@ import './Login.scss';
 
 export class Login extends React.Component{
   render(){
+   const { history } = this.props;
     const form =[
       {
        element:'input',
@@ -25,7 +26,7 @@ export class Login extends React.Component{
       containerClass:'',
       labelValue:'Password',
       labelClass:'password-label',
-      type:'text',
+      type:'password',
       className:'password-textbox',
       placeholder:'Enter your password',
       name:'password'
@@ -37,7 +38,7 @@ export class Login extends React.Component{
           <div className="company-logo">win technologies</div>
         </div>
         <div className="login-form-wrapper">
-          <Form formList={form} hideReset={true} submitLabel={'Login'}/>
+          <Form formList={form} hideReset={true} submitLabel={'Login'} onSubmit={(e)=>{history&&history.push('/home')}}/>
           <div><Link className="forget-password">Forget password?</Link></div>
         </div>
       </div>
