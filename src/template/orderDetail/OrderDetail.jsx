@@ -3,6 +3,7 @@ import { CardsGroup } from '../../organisms/card/CardsGroup';
 import { Form } from '../../organisms/form'
 import { GridWithForm } from '../../organisms/gridWithForm/GridWithForm';
 import { DeleteIcon, EditIcon }  from '../../icons';
+import './Style.scss'
 
 export class OrderDetail extends React.Component{
 
@@ -10,6 +11,7 @@ export class OrderDetail extends React.Component{
     descriptionList:[],
     selectedDescription:{},
     showModal:false,
+    isSubmitEnable:false,
   }
 
   toggleModal = () => {
@@ -286,6 +288,21 @@ export class OrderDetail extends React.Component{
   return data;
   }
   render(){
-    return <CardsGroup allCardsData={this.allCardsData()} />
+    const { isSubmitEnable } = this.state;
+    return (
+      <div className="order-list-container">
+        <div className="order-list-wrapper">
+          <h2 className="header">Client Order Detail</h2>
+          <button
+            type="button"
+            className={`outline save-button ${!isSubmitEnable && 'disabled'}`}
+            onClick={()=>{
+              console.log("form submit")
+            }}
+          >save</button>
+        </div>
+        <CardsGroup allCardsData={this.allCardsData()} />
+      </div>
+    )
   }
 }
