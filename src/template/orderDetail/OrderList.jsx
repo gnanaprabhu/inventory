@@ -15,12 +15,17 @@ export class OrderList extends React.Component {
   state ={
     orderList:[],
   }
+
+  handleEditOrder = (params) => {
+    const { history } = this.props;
+    history && history.push(`/order-detail?editId=${params.row.id}`);
+  }
   renderAssetData = () => {
     const cols = this.orderHandler.getOrderColumns();
     const rows = this.orderHandler.getOrderRows();
     return (
       <>
-       <DataGrid cols={cols} rows={rows} handleRowClick={(params)=>{console.log('row==>',params)}}/>
+       <DataGrid cols={cols} rows={rows} handleRowClick={this.handleEditOrder}/>
       </>
     )
   }
@@ -59,6 +64,11 @@ export class OrderList extends React.Component {
  return data;
 }
 
+handleNewOrder = () => {
+  const { history } = this.props;
+  history && history.push('/order-detail');
+}
+
   render(){
  
     return (
@@ -67,7 +77,7 @@ export class OrderList extends React.Component {
           <h2 className="header">Client Order Detail</h2>
         </div>
         <CardsGroup allCardsData={this.allCardsData()} />
-        <FloatingMenu />
+        <FloatingMenu handleClick={this.handleNewOrder}/>
       </div>
     )
   }

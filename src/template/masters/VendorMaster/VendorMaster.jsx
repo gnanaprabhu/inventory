@@ -2,7 +2,6 @@ import React from 'react';
 import { Form } from '../../../organisms/form';
 import { DataGrid } from '../../../organisms/datagrid';
 import { Modal } from '../../../organisms/modal';
-import { FloatingMenu } from '../../../organisms/floatingMenu';
 import { CardsGroup } from '../../../organisms/card/CardsGroup';
 import { VendorHandler } from './VendorHandler';
 import './Style.scss'
@@ -108,7 +107,6 @@ export class VendorMaster extends React.Component{
         </div>
       <CardsGroup allCardsData={this.allCardsData()} />
     </div>
-    <FloatingMenu />
     </>
   );
   }

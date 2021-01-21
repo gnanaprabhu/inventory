@@ -39,14 +39,10 @@ export class MainMenu extends React.Component{
       label:"Asset Transaction",
       className:"first-level",
       innerClass:"hidden",
-      url:"/home",
+      url:"/order-list",
       icon:<ArrowIcon/>,
       isOpen:false,
       nodes:[{
-        label:"Order Detail",
-        className:"",
-        url:"/order-detail",
-      },{
         label:"Order List",
         className:"",
         url:"/order-list",
@@ -56,9 +52,22 @@ export class MainMenu extends React.Component{
         label:"Asset Inward",
         className:"first-level",
         innerClass:"hidden",
-        url:"/home",
+        url:"/asset-serial-no",
         isOpen:false,
         icon:<ArrowIcon/>,
+        nodes:[{
+          label:"Asset Serial No",
+          className:"asset-serial-no",
+          url:"/asset-serial-no",
+        },{
+          label:"Purchase Inward",
+          className:"purchase-inward",
+          url:"/purchase-inward",
+        },{
+          label:"Purchase Outsource Update",
+          className:"asset-description",
+          url:"/asset-description",
+        }]
       }
    ]
   }
