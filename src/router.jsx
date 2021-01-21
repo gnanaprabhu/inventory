@@ -12,6 +12,7 @@ import { VendorMaster } from './template/masters/VendorMaster/VendorMaster';
 import { OrderList } from './template/orderDetail/OrderList';
 import { OrderDetail } from './template/orderDetail/OrderDetail';
 import { Login } from './template/login/Login';
+import { AssetSerialNumber } from './template/asset/AssetSerialNumber';
 
 const PrivateRoute = ({Component,...rest}) => {
     if(rest.path !== '/login'){
@@ -53,6 +54,7 @@ export const MainRouter = props => (
         <PrivateRoute component={VendorMaster} exact path="/vendor-master"  />
         <PrivateRoute component={OrderList} exact path="/order-list"  />
         <PrivateRoute component={OrderDetail} exact path="/order-detail" />
+        <PrivateRoute component={AssetSerialNumber} exact path="/asset-serial-number"/>
     </Switch>
 )
 

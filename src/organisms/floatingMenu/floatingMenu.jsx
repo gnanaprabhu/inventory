@@ -16,6 +16,7 @@ export class FloatingMenu extends React.Component{
    }
   render() {
     const { showMenu } =  this.state;
+    const {handleClick } = this.props;
     return (
     <div>
       <button className={`fab`}
@@ -30,7 +31,7 @@ export class FloatingMenu extends React.Component{
         <i className='text' />
         <a className='item'
           onClick={()=>{
-            console.log('event');
+            handleClick && handleClick();
           }}
         >-</a>
       </div>
