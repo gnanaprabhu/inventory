@@ -5,7 +5,7 @@ export class OrderHandler {
 
   getOrderRows = () => {
     const { orderList } = this.master.state;
-    return orderList;
+    return [{'id':1,'order-no':'123','client-name':'tyoto','order-date':'23-01-12'},{'id':2,'order-no':'114','client-name':'sail','order-date':'23-01-12'},{'id':3,'order-no':'115','client-name':'yamaha','order-date':'21-01-12'}];
   }
   getOrderColumns = () => {
     const columns = [
