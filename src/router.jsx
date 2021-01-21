@@ -13,6 +13,7 @@ import { OrderList } from './template/orderDetail/OrderList';
 import { OrderDetail } from './template/orderDetail/OrderDetail';
 import { Login } from './template/login/Login';
 import { AssetSerialNumber } from './template/asset/AssetSerialNumber';
+import { PurchaseInward } from './template/asset/PurchaseInward/PurchaseInward';
 
 const PrivateRoute = ({Component,...rest}) => {
     if(rest.path !== '/login'){
@@ -55,6 +56,7 @@ export const MainRouter = props => (
         <PrivateRoute component={OrderList} exact path="/order-list"  />
         <PrivateRoute component={OrderDetail} exact path="/order-detail" />
         <PrivateRoute component={AssetSerialNumber} exact path="/asset-serial-number"/>
+        <PrivateRoute component={PurchaseInward} exact path="/asset-purchase-inward"/>
     </Switch>
 )
 
