@@ -5,6 +5,9 @@ import { DataGrid } from '../../../organisms/datagrid';
 import { CardsGroup } from '../../../organisms/card/CardsGroup';
 import './Style.scss';
  export class AssetClassification extends React.Component{
+  state={
+    isSubmitEnable: false,
+  }
     getNewForm = () => {
       const form =[
         {
@@ -71,9 +74,19 @@ import './Style.scss';
      return data;
      }
   render(){
+    const { isSubmitEnable } =  this.state;
     return (
     <div className="assest-classfication-container">
-      <h2 className="header">Asset Classification</h2>
+      <div className="assest-header-wrapper">
+        <h2 className="header">Asset Classification</h2>
+        <button
+            type="button"
+            className={`outline save-button ${!isSubmitEnable && 'disabled'}`}
+            onClick={()=>{
+              console.log("form submit")
+            }}
+          >save</button>
+      </div>
       <CardsGroup allCardsData={this.allCardsData()} />
      </div>
     );

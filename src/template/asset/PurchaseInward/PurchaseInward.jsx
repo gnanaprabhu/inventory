@@ -1,11 +1,11 @@
 import React from 'react';
-import { CardsGroup } from '../../organisms/card/CardsGroup';
-import { Form } from '../../organisms/form'
-import { GridWithForm } from '../../organisms/gridWithForm/GridWithForm';
-import { DeleteIcon, EditIcon }  from '../../icons';
+import { CardsGroup } from '../../../organisms/card/CardsGroup';
+import { Form } from '../../../organisms/form'
+import { GridWithForm } from '../../../organisms/gridWithForm/GridWithForm';
+import { DeleteIcon, EditIcon }  from '../../../icons';
 import './Style.scss'
 
-export class OrderDetail extends React.Component{
+export class PurchaseInward extends React.Component{
 
   state={
     descriptionList:[],
@@ -69,11 +69,17 @@ export class OrderDetail extends React.Component{
 
   getDescriptionColumns = () => {
     const columns = [
-      { field: 'item-description', headerName: 'Description', width: 150 },
-      { field: 'order-qty', headerName: 'Qty', width: 150 },
-      { field: 'order-new-qty', headerName:'New Qty',width:150 },
-      { field: 'order-rate', headerName:'Rate',width:150 },
-      { field: 'order-total-amount', headerName:'Total Amount',width:150 },
+      { field: 'inward-asset', headerName: 'Asset', width: 75 },
+      { field: 'inward-brand', headerName: 'Brand', width: 75 },
+      { field: 'inward-model', headerName:'Asset Model',width:75 },
+      { field: 'inward-serial-no', headerName:'Serial NO',width:75 },
+      { field: 'inward-description', headerName:'Description',width:75 },
+      { field: 'inward-qty', headerName:'Qty',width:75 },
+      { field: 'inward-price', headerName:'Price',width:75 },
+      { field: 'inward-product-key', headerName:'Product Key',width:75 },
+      { field: 'inward-processor', headerName:'Processor',width:75 },
+      { field: 'inward-gen', headerName:'GEN',width:75 },
+      { field: 'inward-core', headerName:'Core',width:75 },
       {
         field: "edit",
         headerName: "Edit",
@@ -124,60 +130,133 @@ export class OrderDetail extends React.Component{
         element:'input',
         showLabel:true,
         containerClass:'',
-        labelValue:'Item Description',
-        labelClass:'item-description-label',
+        labelValue:'Inward Asset',
+        labelClass:'inward-asset-label',
         type:'text',
-        className:'item-description-value',
+        className:'inward-asset-value',
         placeholder:'',
-        name:'item-description',
+        name:'inward-asset',
         value: '',
       },
       {
        element:'input',
        showLabel:true,
        containerClass:'',
-       labelValue:'Order Qty',
-       labelClass:'order-qty-label',
+       labelValue:'Brand',
+       labelClass:'inward-brand-label',
        type:'text',
-       className:'order-qty-value',
+       className:'inward-brand-value',
        placeholder:'',
-       name:'order-qty',
+       name:'inward-brand',
        value: '',
      },{
       element:'input',
       showLabel:true,
       containerClass:'',
-      labelValue:'New Qty',
-      labelClass:'order-new-qty-label',
+      labelValue:'Asset Model',
+      labelClass:'inward-model-label',
       type:'text',
-      className:'order-new-qty-value',
+      className:'inward-model-value',
       placeholder:'',
-      name:'order-new-qty',
+      name:'inward-model',
       value: '',
     },{
       element:'input',
       showLabel:true,
       containerClass:'',
-      labelValue:'Rate',
-      labelClass:'order-rate-label',
+      labelValue:'Serial NO',
+      labelClass:'inward-serial-no-label',
       type:'text',
-      className:'order-rate-value',
+      className:'inward-serial-no-value',
       placeholder:'',
-      name:'order-rate',
+      name:'inward-serial-no',
       value:  '',
     },
     {
       element:'input',
       showLabel:true,
       containerClass:'',
-      labelValue:'Total Amount',
-      labelClass:'order-total-amount-label',
+      labelValue:'Description',
+      labelClass:'inward-description-label',
       type:'text',
-      className:'order-total-amount-value',
+      className:'inward-description-value',
       placeholder:'',
-      name:'order-total-amount',
+      name:'inward-description',
       value:  '',
-    }];
+    },
+    {
+      element:'input',
+      showLabel:true,
+      containerClass:'',
+      labelValue:'QTY',
+      labelClass:'inward-qty-label',
+      type:'text',
+      className:'inward-qty-value',
+      placeholder:'',
+      name:'inward-qty',
+      value:  '',
+    },
+    {
+      element:'input',
+      showLabel:true,
+      containerClass:'',
+      labelValue:'Price',
+      labelClass:'inward-price-label',
+      type:'text',
+      className:'inward-price-value',
+      placeholder:'',
+      name:'inward-price',
+      value:  '',
+    },
+    {
+      element:'input',
+      showLabel:true,
+      containerClass:'',
+      labelValue:'Product Key',
+      labelClass:'inward-product-key-label',
+      type:'text',
+      className:'inward-product-key-value',
+      placeholder:'',
+      name:'inward-product-key',
+      value:  '',
+    },
+    {
+      element:'input',
+      showLabel:true,
+      containerClass:'',
+      labelValue:'Processor',
+      labelClass:'inward-processor-label',
+      type:'text',
+      className:'inward-processor-value',
+      placeholder:'',
+      name:'inward-processor',
+      value:  '',
+    },
+    {
+      element:'input',
+      showLabel:true,
+      containerClass:'',
+      labelValue:'GEN',
+      labelClass:'inward-gen-label',
+      type:'text',
+      className:'inward-gen-value',
+      placeholder:'',
+      name:'inward-gen',
+      value:  '',
+    },
+    {
+      element:'input',
+      showLabel:true,
+      containerClass:'',
+      labelValue:'Core',
+      labelClass:'inward-core-label',
+      type:'text',
+      className:'inward-core-value',
+      placeholder:'',
+      name:'inward-core',
+      value:  '',
+    },
+  ];
     return form;
   }
 
@@ -188,31 +267,94 @@ export class OrderDetail extends React.Component{
         element:'input',
         showLabel:true,
         containerClass:'',
-        labelValue:'Order No',
-        labelClass:'order-no-label',
+        labelValue:'Purchase InvoiceNo',
+        labelClass:'InvoiceNo-no-label',
         type:'text',
-        className:'order-no-value',
+        className:'InvoiceNo-no-value',
         placeholder:'',
-        name:'order-no',
+        name:'InvoiceNo-no',
         value: '',
       },
       {
         element:'select',
-        name:'client-name',
-        containerClass:'brand-list-container',
+        name:'purchase-office',
+        containerClass:'purchase-Office-container',
         showLabel:true,
-        labelValue:'Client Name',
-        labelClass:'client-name-label',
+        labelValue:'Purchase Office',
+        labelClass:'purchase-office-label',
         value:  '',
         option: [
           {
-            name:'select the brand',
-            value:'select the brand'
+            name:'test',
+            value:'test'
           },
           {
-            name:'Lenovo',
-            value:'Lenovo'
+            name:'test1',
+            value:'test1'
           },{
+            name:'test2',
+            value:'test2'
+          },
+        ],
+      },
+      {
+        element:'select',
+        name:'stock',
+        containerClass:'stock-container',
+        showLabel:true,
+        labelValue:'Stock',
+        labelClass:'stock-label',
+        value:  '',
+        option: [
+          {
+            name:'test',
+            value:'test'
+          },
+          {
+            name:'test1',
+            value:'test1'
+          },{
+            name:'test2',
+            value:'test2'
+          },
+        ],
+      },
+      {
+        element:'select',
+        name:'purchase-date',
+        containerClass:'purchase-data-container',
+        showLabel:true,
+        labelValue:'Purchase Date',
+        labelClass:'purchase-date-label',
+        value:  '',
+        option: [
+          {
+            name:'test',
+            value:'test'
+          },
+          {
+            name:'test1',
+            value:'test1'
+          },{
+            name:'test2',
+            value:'test2'
+          },
+        ],
+      },
+      {
+        element:'select',
+        name:'vendor-name',
+        containerClass:'vendor-name-container',
+        showLabel:true,
+        labelValue:'Vendor Name',
+        labelClass:'vendor-name-label',
+        value:  '',
+        option: [
+          {
+            name:'test',
+            value:'test'
+          },
+          {
             name:'test1',
             value:'test1'
           },{
@@ -225,12 +367,12 @@ export class OrderDetail extends React.Component{
        element:'input',
        showLabel:true,
        containerClass:'',
-       labelValue:'Remarks',
-       labelClass:'order-remarks-label',
+       labelValue:'Qty',
+       labelClass:'qty-label',
        type:'text',
-       className:'order-remarks-value',
+       className:'Qty-value',
        placeholder:'',
-       name:'order-remarks',
+       name:'purchase-qty',
        value: '',
      },{
       element:'input',
@@ -247,19 +389,19 @@ export class OrderDetail extends React.Component{
       element:'input',
       showLabel:true,
       containerClass:'',
-      labelValue:'Address',
-      labelClass:'order-address-label',
+      labelValue:'Vendor Address',
+      labelClass:'vendor-address-label',
       type:'text',
-      className:'order-address-value',
+      className:'vendor-address-value',
       placeholder:'',
-      name:'order-address',
+      name:'vendor-address',
       value:  '',
     }];
     return form;
   };
 
   renderNewOrderForm = () => {
-   return( <div className='new-order-container'>
+   return( <div className='new-inward-container'>
         <Form formList={this.getNewOrderForm()} onSubmit={()=>{}}/>
       </div>
    );
@@ -273,7 +415,7 @@ export class OrderDetail extends React.Component{
   },{
     children: <GridWithForm 
     showModal={showModal} 
-    title="Add Order Description" 
+    title="Add Inward" 
     handleFormSubmit={this.handleFormSubmit} 
     formList={this.getNewOrderDescriptionForm()} 
     cols={this.getDescriptionColumns()} 
@@ -290,9 +432,9 @@ export class OrderDetail extends React.Component{
   render(){
     const { isSubmitEnable } = this.state;
     return (
-      <div className="order-list-container">
-        <div className="order-list-wrapper">
-          <h2 className="header">Client Order Detail</h2>
+      <div className="purchase-inward-container">
+        <div className="purchase-inward-wrapper">
+          <h2 className="header">Purchase Inward</h2>
           <button
             type="button"
             className={`outline save-button ${!isSubmitEnable && 'disabled'}`}

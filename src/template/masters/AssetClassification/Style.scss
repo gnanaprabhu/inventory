@@ -81,3 +81,24 @@
     }
   }
 }
+.assest-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  .save-button {
+    height: 40px;
+    padding: 8px 20px;
+    background: #F36E44;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1;
+    cursor: pointer;
+    outline: none !important;
+    text-align: center;
+    border: 1px solid;
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}

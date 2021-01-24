@@ -74,7 +74,7 @@ handleNewOrder = () => {
     return (
       <div className="order-list-container">
         <div className="order-list-wrapper">
-          <h2 className="header">Client Order Detail</h2>
+          <h2 className="header">Client Order list</h2>
         </div>
         <CardsGroup allCardsData={this.allCardsData()} />
         <FloatingMenu handleClick={this.handleNewOrder}/>
