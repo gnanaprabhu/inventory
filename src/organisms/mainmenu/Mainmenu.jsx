@@ -52,21 +52,17 @@ export class MainMenu extends React.Component{
         label:"Asset Inward",
         className:"first-level",
         innerClass:"hidden",
-        url:"/asset-serial-no",
+        url:"/asset-serial-number",
         isOpen:false,
         icon:<ArrowIcon/>,
         nodes:[{
           label:"Asset Serial No",
-          className:"asset-serial-no",
-          url:"/asset-serial-no",
+          className:"asset-serial-number",
+          url:"/asset-serial-number",
         },{
           label:"Purchase Inward",
           className:"purchase-inward",
-          url:"/purchase-inward",
-        },{
-          label:"Purchase Outsource Update",
-          className:"asset-description",
-          url:"/asset-description",
+          url:"/asset-purchase-inward",
         }]
       }
    ]

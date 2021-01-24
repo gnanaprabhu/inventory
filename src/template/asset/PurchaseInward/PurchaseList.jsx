@@ -1,16 +1,16 @@
 import React from 'react';
-import { Select } from '../../atoms';
-import { DataGrid } from '../../organisms/datagrid';
-import { FloatingMenu } from '../../organisms/floatingMenu';
-import { OrderHandler } from './OrderHandler';
-import { CardsGroup } from '../../organisms/card/CardsGroup';
+import { Select } from '../../../atoms';
+import { DataGrid } from '../../../organisms/datagrid';
+import { FloatingMenu } from '../../../organisms/floatingMenu';
+import { PurchaseHandler } from './PurchaseHandler';
+import { CardsGroup } from '../../../organisms/card/CardsGroup';
 import './Style.scss'
 
 
-export class OrderList extends React.Component {
+export class PurchaseList extends React.Component {
   constructor(props){
     super(props);
-    this.orderHandler =  new OrderHandler(this);
+    this.purchaseHandler =  new PurchaseHandler(this);
   }
   state ={
     orderList:[],
@@ -18,11 +18,11 @@ export class OrderList extends React.Component {
 
   handleEditOrder = (params) => {
     const { history } = this.props;
-    history && history.push(`/order-detail?editId=${params.row.id}`);
+    history && history.push(`/asset-new-purchase?editId=${params.row.id}`);
   }
   renderAssetData = () => {
-    const cols = this.orderHandler.getOrderColumns();
-    const rows = this.orderHandler.getOrderRows();
+    const cols = this.purchaseHandler.getOrderColumns();
+    const rows = this.purchaseHandler.getOrderRows();
     return (
       <>
        <DataGrid cols={cols} rows={rows} handleRowClick={this.handleEditOrder}/>
@@ -32,7 +32,7 @@ export class OrderList extends React.Component {
   allCardsData = () => {
     const selectProps = {
       showLabel:true,
-      labelValue:'Client Name',
+      labelValue:'Vendor Name',
       labelClass:'search-order',
       onChange:this.handleChange,
       option: [
@@ -51,7 +51,7 @@ export class OrderList extends React.Component {
     const data = [
       {
       children: <Select {...selectProps}/>,
-      label: 'order list',
+      label: 'purchase list',
       id:1,
    },
      {
@@ -66,7 +66,7 @@ export class OrderList extends React.Component {
 
 handleNewOrder = () => {
   const { history } = this.props;
-  history && history.push('/order-detail');
+  history && history.push('/asset-new-purchase');
 }
 
   render(){
@@ -74,7 +74,7 @@ handleNewOrder = () => {
     return (
       <div className="order-list-container">
         <div className="order-list-wrapper">
-          <h2 className="header">Client Order list</h2>
+          <h2 className="header">Purchase list</h2>
         </div>
         <CardsGroup allCardsData={this.allCardsData()} />
         <FloatingMenu handleClick={this.handleNewOrder}/>
